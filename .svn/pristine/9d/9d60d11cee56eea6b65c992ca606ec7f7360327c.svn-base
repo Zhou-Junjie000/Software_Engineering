@@ -1,0 +1,54 @@
+package com.xlf.modules.dataMaintenance.entity;
+
+import java.util.Date;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
+import lombok.Data;
+
+@Data
+@Table(name = "mt_support")
+public class SupportEntniy {
+	@Id
+	private String id; // '表ID，主键',
+	private String module; // '所属模块',
+	@Transient
+	private String modulename; // '所属模块名称',
+	@Transient
+	private String pmodulename; // '所属父模块名称',
+	private String type; // '问题类型',
+	@Transient
+	private String typename; // '问题类型',
+	private String proposer; // '提出人',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JSONField(format = "yyyy/MM/dd")
+	private Date proposedate; // '提出日期',
+	@Transient
+	private String proposedaterange;
+	private String info; // '问题概述',
+	private String count; // '数量',
+	private String prework; // '反馈用户工作量(小时)',
+	private String realwork; // '实际投入工作量(小时)',
+	private String resolver; // '解决人',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JSONField(format = "yyyy/MM/dd")
+	private Date resolvedate; // '解决日期',
+	@Transient
+	private String resolvedaterange;
+	private String remark; // '备注'
+	
+	private String creater; // '解决人',
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JSONField(format = "yyyy/MM/dd")
+	private Date createdate; // '解决日期',
+	@Transient
+	private String createdaterange;
+	@Transient
+	private String ifexport;
+}

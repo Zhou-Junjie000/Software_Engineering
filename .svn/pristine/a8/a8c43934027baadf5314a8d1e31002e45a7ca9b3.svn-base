@@ -1,0 +1,136 @@
+{
+	"contentManagement": [
+		{
+			"title": "项目操作",
+			"icon": "iconfont icon-xiangmu",
+			"href": "project/list",
+			"spread": false
+		},
+		{
+			"title": "协同/转派",
+			"icon": "iconfont icon-assist-connect",
+			"href": "coordinateTransfer/list",
+			"spread": false
+		},
+		{
+			"title": "附件管理",
+			"icon": "iconfont icon-shangchuan1",
+			"href": "attachment/list",
+			"spread": false
+		},
+		{
+			"title": "表单管理",
+			"icon": "iconfont icon-biaodan",
+			"href": "",
+			"spread": false,
+			"children":[
+				{
+					"title": "我的草稿",
+					"icon": "iconfont icon-yuandian",
+					"href": "formBase/myList?status=1&titleType=mydraft",
+					"spread": false
+				},
+				{
+					"title": "我的审批中",
+					"icon": "iconfont icon-yuandian",
+					"href": "formBase/myList?status=2,3,4,5&linkStatus=6&titleType=myApproval",
+					"spread": false
+				},
+				{
+					"title": "待审批",
+					"icon": "iconfont icon-yuandian",
+					"href": "formBase/list?status=2&linkStatus=1,6&titleType=audit",
+					"spread": false
+				},
+				{
+					"title": "审批通过",
+					"icon": "iconfont icon-yuandian",
+					"href": "formBase/list?status=2,3,4,5&linkStatus=2&titleType=auditPass",
+					"spread": false
+				},
+				{
+					"title": "审批不通过",
+					"icon": "iconfont icon-yuandian",
+					"href": "formBase/list?status=2,3,4,5&linkStatus=3&titleType=auditFailed",
+					"spread": false
+				}
+				
+			]
+		},
+		{
+			"title": "供方管理",
+			"icon": "iconfont icon-gongyingshang1",
+			"href": "supplier/list",
+			"spread": false
+		},
+		{
+			"title": "客户管理",
+			"icon": "iconfont icon-kehu",
+			"href": "customer/list",
+			"spread": false
+		},
+		{
+			"title": "财务管理",
+			"icon": "iconfont icon-biaodan",
+			"href": "",
+			"spread": false,
+			"children":[
+				{
+					"title": "收款信息",
+					"icon": "iconfont icon-yuandian",
+					"href": "financePaymentReceived/receivedList",
+					"spread": false
+				},
+				{
+					"title": "付款信息",
+					"icon": "iconfont icon-yuandian",
+					"href": "financePaymentReceived/paymentList",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "成本比价",
+			"icon": "iconfont icon-chengben",
+			"href": "",
+			"spread": false
+		},
+		{
+			"title": "资金计划",
+			"icon": "iconfont icon-zijin",
+			"href": "",
+			"spread": false,
+			"children":[
+				{
+					"title": "汇率维护",
+					"icon": "iconfont icon-yuandian",
+					"href": "finance/list",
+					"spread": false
+				},
+				{
+					"title": "计划列表",
+					"icon": "iconfont icon-yuandian",
+					"href": "financePlan/list",
+					"spread": false
+				}
+			]
+			
+		},
+		{
+			"title": "系统管理",
+			"icon": "iconfont icon-system",
+			"href": "",
+			"spread": false,
+			"children":[
+				{
+					"title": "员工部门管理",
+					"icon": "iconfont icon-yuandian",
+					"href": "orgStruct/index",
+					"spread": false
+				}
+			]
+		}
+	]
+}
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="${bg!}">
+
+@/**
+@ *      本页面所用的模板变量
+@ *
+@ * title          :  页面的标题
+@ * layoutContent  :  主页面的html内容
+@ * js             :  业务所需要的js，为数组
+@ * css            :  业务所需要的css，为数组
+@ * bg             :  背景颜色
+@ **/
+
+<head>
+   	<meta charset="utf-8">
+	<title>健身房管理系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="icon" href="favicon.ico">
+	<link rel="stylesheet" href="${ctxPath}/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="${ctxPath}/assets/css/formSelects-v4.css"/>
+	<link rel="stylesheet" href="${ctxPath}/assets/css/ztree/css/metroStyle/metroStyle.css">
+	<link rel="stylesheet" href="${ctxPath}/assets/css/base.css" media="all" />
+	<link rel="stylesheet" href="${ctxPath}/assets/css/other/listTable.css">
+	<link rel="stylesheet" href="${ctxPath}/kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="${ctxPath}/kindeditor/plugins/code/prettify.css" />
+
+
+
+	<!-- 全局变量 -->
+	@include("/common/_const.html"){}
+	
+    @/* 其他业务用的css */
+    @if(isNotEmpty(css)){
+        @for(item in css){
+            @if(strutil.startWith(item,"/")){
+                @item = ctxPath + item;
+            @}
+            <link href="${item}" rel="stylesheet" type="text/css" />
+        @}
+    @}
+</head>
+
+<body class="childrenBody">
+
+@/* 正文 */
+${layoutContent}
+
+	@/* js和业务用的js数组 */
+	<script type="text/javascript" src="${ctxPath}/assets/layui/layui.js"></script>
+	<script type="text/javascript" src="${ctxPath}/assets/js/winUtils.js"></script>
+	<script type="text/javascript"  charset="utf-8" src="${ctxPath}/kindeditor/kindeditor-all.js"></script>
+	<script type="text/javascript"  charset="utf-8" src="${ctxPath}/kindeditor/lang/zh-CN.js"></script>
+	<script type="text/javascript"  charset="utf-8" src="${ctxPath}/kindeditor/plugins/code/prettify.js"></script>
+
+	<script type="text/javascript" src="${ctxPath}/assets/js/autosize/autosize.js"></script><!-- textarea高度自适应 -->
+	<script type="text/javascript">
+		layui.config({
+			base : "${ctxPath}/assets/js/"
+		}).extend({
+			"mySelectTree" : "mySelectTree",
+			"treeSelect":"treeSelect",
+			"linkCalendar" : "linkCalendar/linkCalendar",
+			"steps":"steps/steps",
+			"uploadFile":"uploadFile",
+			"inputNumber":"inputNumber",
+			"treeSelect":"treeSelect",
+			"openModal":"openModal",
+			"myTable" : "myTable",
+			"formSelects" : "formSelects",
+			"inputValue" : "inputValue"
+		});
+
+		//获取父级表格
+		var parentMyTable;
+		function initConfig(myTable){
+			parentMyTable = myTable;
+		}
+		//处理时间输入框默认加载历史记录的问题，默认屏蔽历史记录
+		layui.define(['jquery'], function(exports){
+			var $ = layui.jquery;
+			$('input.date-input:not([autocomplete])').attr('autocomplete', 'off');
+		});
+	</script>
+
+	@if(isNotEmpty(js)){
+	    @for(item in js){
+	        @if(strutil.startWith(item,"/")){
+	            @item = ctxPath + item;
+	        @}
+	        <script src="${item}"></script>
+	    @}
+	@}
+</body>
+</html>

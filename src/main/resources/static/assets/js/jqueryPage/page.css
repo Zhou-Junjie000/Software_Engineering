@@ -1,0 +1,35 @@
+.page{
+    list-style: none;
+    text-align: center;
+}
+.page>li{
+    cursor: pointer;
+    margin: 15px 6px -5px;
+    font-size: 14px;
+    border-radius: 100%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    color: #7F94C3;
+    border: 1px solid #D5DEEF;
+}
+.page .pageItem{
+    border: solid thin #e9edf2;
+}
+.page .pageItemActive{
+    border: solid thin #1F65EB;
+    background-color: #1F65EB;
+    color:white;
+}
+.page .pageItem:hover{
+    border: solid thin #1F65EB;
+    background-color: #1F65EB;
+    color:white;
+}
+.page .pageItemDisable{
+    border: solid thin #e9edf2;
+    background-color: #e9edf2;
+    cursor: not-allowed;
+}

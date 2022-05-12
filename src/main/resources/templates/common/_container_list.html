@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="${bg!}">
+
+@/**
+@ *      本页面所用的模板变量
+@ *
+@ * title             :  页面的标题
+@ * layoutContent     :  主页面的html内容	
+@ * js                :  业务所需要的js，为数组	Array
+@ * css               :  业务所需要的css，为数组	Array
+@ * bg                :  背景颜色
+@ * entity            :  实体对象	Object
+@ * 	tag           :  tag值	String
+@ * 	addBtnHide    :  隐藏增加按钮	Boolean
+@ * 	delBtnHide    :  隐藏删除按钮	Boolean
+@ * 	fastsearch 	  :  快速查询	Boolean
+@ * 	fsPlaceholder :  快速查询	String
+@ *     fastday       :  日期选择  Boolean
+@ * 	dayPlaceholder:  日期选择	String
+@ * 	advsearch  	  :  高级查询	Boolean 	
+@ * 	advsearchHtml :  高级查询	Html	说明：高级查询默认使用 "modules/${entity.tag}/search.html"
+@ **/
+<head>
+   	<meta charset="utf-8">
+	<title>${site.name}</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="icon" href="favicon.ico">
+	<link rel="stylesheet" href="${ctxPath}/assets/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="${ctxPath}/assets/css/formSelects-v4.css"/>
+	<link rel="stylesheet" href="${ctxPath}/assets/css/base.css" media="all" />
+	<link rel="stylesheet" href="${ctxPath}/assets/css/other/listTable.css">
+	<link rel="stylesheet" href="${ctxPath}/assets/css/ztree/css/metroStyle/metroStyle.css">
+	<!-- 全局变量 -->
+	@include("/common/_const.html"){}
+	
+	<script type="text/javascript">
+		var Entity = {
+			tag : "${entity.tag}",
+			name : "${entity.name}",
+		}
+	</script>
+	
+    @/* 其他业务用的css */
+    @if(isNotEmpty(css)){
+        @for(item in css){
+            @if(strutil.startWith(item,"/")){
+                @item = ctxPath + item;
+            @}
+            <link href="${item}" rel="stylesheet" type="text/css" />
+        @}
+    @}
+</head>
+
+<body class="childrenBody">	
+    <!-- 警告消息提示 -->
+    <div class="alert-warning hide">
+        <span class="alert-message">
+				Notice: notification contents...
+		</span>
+		<button type="button" class="alert-close fr"><i class="layui-icon layui-icon-close"></i></button>
+	</div>
+
+	<div class="project-advanced-search clearfix">
+		<!-- toolbar -->
+		<div class="pas-title clearfix pas-table-tool fl">
+			<div class="layui-inline fl pas-title-left">
+				@if(isNotEmpty(title)){
+				<span class="line-after-span">${title}</span>
+				@}
+				<div id="toolbarView" class="table-tool-btns">
+					@if(!isNotEmpty(entity.addBtnHide)){
+					<a class="layui-btn layui-btn-radius layui-add-btn add_btn"><i class="iconfont icon-xinjian"></i></a>
+					@}
+					@if(!isNotEmpty(entity.delBtnHide)){
+			     	<a class="layui-btn layui-btn-radius layui-del-btn delAll_btn"><i class="iconfont icon-delete"></i></a>
+			     	@}
+			     	
+			     	<div class="layui-inline toolbar-other-btns">
+						<a class="layui-btn layui-btn-radius basic-btn importTemp"  style="display:none"><i class="iconfont icon-daoru"></i>导入</a>
+						<a class="layui-btn layui-btn-radius unactive-btn exportAll" style="display:none">
+							<i class="iconfont icon-daochu"></i>导出全部
+						</a>
+						<a class="layui-btn layui-btn-radius unactive-btn exportTemp" style="display:none">
+							<i class="iconfont icon-xiazai"></i>下载模板
+						</a>
+					</div>
+				</div>
+				<div class="table-tool-btns" style="visibility: hidden" id="sort">
+				</div>
+			</div>
+			
+			<div class="layui-inline fr">
+				@if(isNotEmpty(entity.fastsearch) && entity.fastsearch == true){
+				<div class="fuzzy-search layui-inline fl">
+					<input placeholder="${entity.fsPlaceholder}" name="${entity.fsPlaceholderField}" class="fs-input fastsearchInput">
+					<!-- <button class="fs-search-btn basic-btn fastsearchBtn">
+						<i class="iconfont icon-sousuo1"></i>
+					</button> -->
+					@if(isNotEmpty(entity.advsearch) && entity.advsearch == true){
+						<button class="fs-search-btn basic-btn" id="advancedSearch" >
+							<i class="iconfont icon-zhankai"></i>
+						</button>
+					@}
+				</div>
+				@}
+				
+				@if(isNotEmpty(entity.advsearch) && entity.advsearch == true){
+				<!-- <div class="layui-inline fl">
+					<a class="layui-btn basic-btn search_btn" data-type="reload" id="advancedSearch">高级查询</a>
+				</div> -->
+				@}
+				
+				<!-- 正常与紧凑按钮 -->
+				<!--  <div class="switch-layout">
+			         <form class="layui-form">
+					     <input type="checkbox" checked="" lay-skin="switch" lay-filter="switchLayout" lay-text="紧凑|正常">
+					</form>
+			     </div> -->
+			</div>
+		</div>
+		
+	@if(isNotEmpty(entity.advsearch) && entity.advsearch == true){
+		@advsearchFile = entity.advsearchHtml;
+		@if(isEmpty(advsearchFile)){
+			@advsearchFile = "../modules/" + entity.tag + "/search.html";
+		@}
+		<div class="layui-card advanced-search-card pas-content fl layui-hide suspension">
+			<div class="layui-card-header">
+				<span class="lch-title fl"> 高级查询 </span>
+				<div class="layui-inline fr">
+				   <a class="layui-btn basic-btn  search_btn unfold-btn" href="JavaScript:;"><span>更多</span> <i class="iconfont icon-zhankai"></i></a>
+				  <!--  <form class="layui-form">
+					   <label class="switch-label">显示：</label>
+					   <input type="checkbox" class="layui-unselect layui-form-switch" lay-skin="switch" lay-filter="advancedSearchSwitchPosition">
+					</form> -->
+				</div> 
+			</div>
+			<form class="layui-form advancedSearchForm" lay-filter="advancedSearchForm">
+				<div class="layui-card-body clearfix">
+					<!-- 高级查询 -->
+					@include(advsearchFile){}
+				</div>
+				<div class="btns-footer">
+					<a class="layui-btn search_btn basic-btn" lay-submit="advancedSearchSubmit" lay-filter="advancedSearchSubmit">查询</a>
+<!--					<a class="layui-btn basic-btn" type="reset"  lay-submit="advancedSearchReset" lay-filter="advancedSearchReset">清除</a>-->
+					<a class="layui-btn basic-btn retract-btn" id="advancedSearchHide" lay-submit="advancedSearchHide" lay-filter="advancedSearchHide">重置</a>
+				</div>
+		   </form>
+		@}
+			
+		@/* 正文 */
+		${layoutContent}
+		</div>
+	</div>
+	<table id="list" lay-filter="list" class="layui-hide project-table"></table>
+	
+	<!-- 自定义工具栏 -->
+	<script type="text/html" id="listToolbar">
+		<div>
+			<div class='layui-inline my-table-refresh' title="刷新">
+				<i class='iconfont icon-Asset-copy'></i>
+			</div>
+		</div>
+	</script>
+
+	@/* js和业务用的js数组 */
+	<script type="text/javascript" src="${ctxPath}/assets/layui/layui.js"></script>
+	<script type="text/javascript" src="${ctxPath}/assets/js/dataUtils.js"></script>
+	<script type="text/javascript" src="${ctxPath}/assets/js/winUtils.js"></script>
+	<script type="text/javascript">
+		layui.config({
+			base : "${ctxPath}/assets/js/"
+		}).extend({
+			"myTable" : "myTable",
+			"formSelects" : "formSelects",
+			"treeSelect":"treeSelect",
+			"openModal":"openModal",
+			"financeTable":"financeTable",
+			"dochandoverTable":"dochandoverTable",
+			"echarts": "/echarts/echarts"
+		});
+	</script>
+
+	@if(isNotEmpty(js)){
+	    @for(item in js){
+	        @if(strutil.startWith(item,"/")){
+	            @item = ctxPath + item;
+	        @}
+	        <script src="${item}"></script>
+	    @}
+	@}
+</body>
+</html>

@@ -1,0 +1,92 @@
+@layout("/common/_container.html",{js:["/modules/userManager/add.js"]}){
+<form class="layui-form" lay-filter="form">
+	<div class="layer-contain">
+		<div class="sheet-title">
+			<span>基本信息</span>
+		</div>
+		<div class="sheet-item clearfix">
+			<div class="layui-div-form clearfix" style="width:82%;">
+				<input type="hidden" name="id" id="id">
+
+				<div class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>用户名：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<input type="text" class="layui-input name" lay-verify="required"
+							placeholder="请输入用户名" name="account">
+					</div>
+				</div>
+				<div
+					class="layui-form-item layui-col-xs6 layui-col-md6" id="password_div">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>账号密码：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<input type="text" class="layui-input name"  lay-verify="required"
+							placeholder="请输入密码" name="password">
+					</div>
+				</div>
+				<div
+					class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>姓名：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<input type="text" class="layui-input name"  lay-verify="required"
+							placeholder="请输入姓名" name="name">
+					</div>
+				</div>
+
+				
+				<div class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>角色：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<select name="role" lay-filter="chargeman" lay-search  lay-verify="required">
+							<option value="">请选择角色</option>
+							@for(obj in dict.listBySql("select id as fldkey,name as value from t_role")){
+							<option value="${obj.fldkey}">${obj.value}</option>
+							@}
+			   			</select>
+					</div>
+				</div>
+				
+				<div
+					class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>性别：</label>
+					<div class="layui-input-block layui-input-textarea" >
+						<input lay-filter="source" name="sex" type="radio" title="男" value="0" checked/>
+						<input lay-filter="source" name="sex" type="radio" title="女" value="1"/>
+					</div>
+				</div>
+				<div
+					class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>邮箱：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<input type="text" class="layui-input name"  lay-verify="required"
+							placeholder="请输入邮箱" name="mail">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="btns-footer form-operate-btns">
+		<button class="layui-btn layui-btn-sm basic-btn"
+			lay-submit="addUser" lay-filter="addUser">确认</button>
+		<button class="layui-btn layui-btn-sm basic-btn layui-btn-primary"
+			type="reset">重置</button>
+		<button class="layui-btn layui-btn-sm basic-btn layui-btn-primary"
+			type="reset" id="close">关闭</button>
+	</div>
+</form>
+<script type="text/javascript">
+	var Entity = {
+		tag : "userManager",
+		name : "用户",
+	}
+	//页面常量
+	var user = {
+			id:'${userId}'
+	};
+</script>
+@}

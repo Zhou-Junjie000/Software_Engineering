@@ -1,0 +1,31 @@
+@ /* 引用的文件路径，{}其它应用的属性对象集合*/
+@layout("/common/_container_list.html",
+@	{
+@		js:["/modules/book/list.js"],
+@		title: '',
+@		entity:{
+@			tag:'book',
+@			name: '预约记录',
+@			addBtnHide: true,
+@			delBtnHide: true,
+@			fastsearch: false,
+@			fsPlaceholder: '请输入客户姓名',
+@			fsPlaceholderField: 'search',
+@			advsearch: false,
+@			advsearchHtml:"/modules/book/search.html"
+@		}
+@	}){
+<script type="text/javascript">
+var Entity = {
+		tag : "book",
+		name : "预约记录",
+	}
+var PAGE_CONSTANT = {
+		roleId : '${roleId}',
+		type:'${type}',
+		coachid:'${coachid}',
+		courseid:'${courseid}',
+		materialid:'${materialid}'
+}
+</script>
+@}

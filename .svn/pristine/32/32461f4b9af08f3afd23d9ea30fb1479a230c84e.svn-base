@@ -1,0 +1,69 @@
+package com.xlf.modules.attachment.service.impl;
+
+import java.util.List;
+
+import org.apache.shiro.SecurityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.xlf.common.base.mybatis.BaseMapper;
+import com.xlf.common.vo.PageVo;
+import com.xlf.modules.attachment.entity.AttachmentEntity;
+import com.xlf.modules.attachment.mapper.AttachmentMapper;
+import com.xlf.modules.attachment.service.AttachmentService;
+import com.xlf.modules.sys.entity.User;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import cn.hutool.core.util.StrUtil;
+@Service
+public class AttachmentServiceImpl implements AttachmentService{
+	@Autowired
+	private AttachmentMapper attachmentMapper;
+
+	@Override
+	public BaseMapper<AttachmentEntity> getBaseMapper() {
+		return attachmentMapper;
+	}
+	
+	@Override
+	public PageVo page(PageVo pageVo, AttachmentEntity attachmentEntity) {
+		String orderBy = "";
+		
+		String defaultOrderBy = pageOrderBy();
+
+		if(StrUtil.isNotBlank(defaultOrderBy)){
+			orderBy = defaultOrderBy;
+		}
+
+		if (StrUtil.isNotBlank(pageVo.getOrder()) && StrUtil.isNotBlank(pageVo.getSort())) {
+			orderBy = pageVo.getSort() + " " + pageVo.getOrder();
+		}
+		
+		PageHelper.startPage(pageVo.getPageNum(), pageVo.getPageSize(),orderBy);
+		
+		User user = (User)SecurityUtils.getSubject().getPrincipal();
+		List<AttachmentEntity> list = attachmentMapper.pageList(user.getId(),pageVo.getSearch(),"");
+		PageInfo<AttachmentEntity> pageInfo = new PageInfo<AttachmentEntity>(list);
+
+		pageVo.setRows(pageInfo.getList());
+		pageVo.setTotal(pageInfo.getTotal());
+		
+		return pageVo;
+	}
+
+	@Override
+	public List<AttachmentEntity> getAttListByPT(String pt,String filesource) {
+		User user = (User)SecurityUtils.getSubject().getPrincipal();
+		return attachmentMapper.pageList(user.getId(),pt,filesource);
+	}
+
+	@Override
+	public void inserBatch(List<AttachmentEntity> list) {
+		// TODO Auto-generated method stub
+		attachmentMapper.inserBatch(list);
+	}
+
+
+
+}

@@ -1,0 +1,25 @@
+/**
+ * 
+ */
+package com.xlf.common.easyexcel;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * @Description:EasyExcel 自定义注解 用户读取时忽略某个sheet
+ * @author: songpeng 
+ * @date: date{time} （日期） 
+*/
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
+public @interface SheetIgnore {
+	/**
+     * default extension name
+     */
+    String value() default "";
+}

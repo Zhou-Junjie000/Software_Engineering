@@ -1,0 +1,27 @@
+package com.xlf.modules.course.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import com.xlf.common.base.mybatis.BaseMapper;
+import com.xlf.modules.course.entity.Course;
+
+@Mapper
+public interface CourseMapper extends BaseMapper<Course>{
+	
+	@Select({"<script>",
+		" select * from t_course a where 1=1",
+		"<if test='search!=null and search!=\"\"'>" +
+	 	"	and a.name like  '%${search}%' " +
+	 	"</if>" +
+	 	"<if test='condition!=null and condition!=\"\"'>" +
+	 	"	${condition} " +
+	 	"</if>" +
+	 	"order by name" +
+		"</script>"})
+	List<Course> pageList(@Param("search") String search,@Param("entity") Course entity,
+			@Param("condition") String condition);
+}

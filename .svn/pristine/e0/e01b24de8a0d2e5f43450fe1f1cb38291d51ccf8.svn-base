@@ -1,0 +1,17 @@
+package com.xlf.modules.attachment.service;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.xlf.common.base.mybatis.MybatisEntityService;
+import com.xlf.common.vo.PageVo;
+import com.xlf.modules.attachment.entity.AttachmentEntity;
+
+public interface AttachmentService extends MybatisEntityService<AttachmentEntity, String>{
+
+	List<AttachmentEntity> getAttListByPT(String pt,String filesource);
+	
+	void inserBatch(List<AttachmentEntity> list);
+	
+}

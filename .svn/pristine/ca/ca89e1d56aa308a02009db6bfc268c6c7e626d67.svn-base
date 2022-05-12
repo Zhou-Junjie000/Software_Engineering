@@ -1,0 +1,276 @@
+@charset "utf-8";
+/*日历*/
+.calender-link{
+	width: 100%;
+	position: relative;
+	border-top: 1px solid #7F94C3;
+    overflow: auto;
+    overflow-y: hidden;
+    margin-bottom: 2px;
+}
+/*c-head头部*/
+.calender-link .c-head{
+	width: 100%;
+	height: 40px;
+    position: relative;
+}
+.c-head li,.table-item-ul li{
+	width: 420px;
+	height: 100%;
+	line-height: 40px;
+	text-align: center;
+	border-right: 1px solid #D5DEEF;
+	font-size: 14px;
+	float: left;
+}
+.c-head li.check-column,.table-item-ul li.check-column{
+	width: 70px;
+}
+.c-head li:last-child,.table-item-ul li:last-child{
+	/* border-right: 1px solid transparent; */
+}
+.c-head .transparentBg{
+    width: 40%;
+    height: 100%;
+    background: rgba(238, 238, 238, 0.3);
+    position: absolute;
+    top: 0;
+    left: 10%;
+    z-index: 1;
+}
+/*c-body身体*/
+.c-body{
+	width: 100%;
+    height: calc(100% - 40px);
+    font-size: 0;
+	position: relative;
+	z-index: 1;
+}
+.div-item{
+   position: relative;
+}
+/* 每行数据 */
+.table-item{
+	height: 48px;
+	width: 100%;
+	position: relative;
+}
+.table-item-ul {
+	height: 100%;
+}
+.table-item-ul li{
+	height: 100%;
+	line-height: 48px;
+	border-top: 1px solid #D5DEEF;
+}
+.c-WTCon{
+	position: absolute;
+	top: 8px;
+    border-radius: 100px;
+	z-index: 4;
+}
+.c-WTCon .c-schedule {
+	min-width: 34px;
+    height: 100%;
+    position: relative;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 100px;
+    padding: 4px;
+    height: 34px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+.c-WTCon .c-schedule.active{
+    border-color: #fb0167;
+}
+.c-schedule i.iconfont{
+	margin-right: 3px;
+}
+.c-schedule:after{
+	content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100px;
+    background: url("../../images/slash_bg.png");
+    opacity: 0.15;
+}
+.c-leave .c-schedule:after{
+	opacity: 0.5;
+}
+.c-schedule.notBack:after{
+	content: '';
+	background: none;
+}
+/* 环节序号 */
+.serial-num{
+	width: 22px;
+	height: 22px;
+	border-radius: 100%;
+	border: 1px solid transparent;
+	display: inline-block;
+	line-height: 20px;
+	text-align: center;
+	color: #fff;
+}
+.c-schedule:not(.serial-num){
+	margin-left: 4px;
+}
+.c-schedule span:not(.serial-num){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: calc(100% - 28px);
+}
+/*进行中*/
+.c-ongoing .c-schedule{
+	background: linear-gradient(to right, #FFA200 , #f9b43b);
+}
+.c-ongoing .c-schedule .serial-num{
+	background: #FFBD23;
+	border-color: #FFCC56;
+}
+/*超时*/
+.c-chaoshi .c-schedule{
+	background: linear-gradient(to right, #FB0167 , #FB0167);
+}
+.c-chaoshi .c-schedule .serial-num{
+	background: #FB0167;
+	border-color: #FFCC56;
+}
+/*已完成*/
+.c-finished .c-schedule{
+	background: linear-gradient(to right, #23e769 , #12ee9e);
+}
+.c-finished .c-schedule .serial-num{
+	background: #11CB4F;
+	border-color: #2CED6C;
+}
+/* 未开始 */
+.c-notstarted .c-schedule{
+	color: #5C6989;
+	background: #EFF3F9;
+}
+.c-notstarted .c-schedule:after{
+	display: none;
+}
+.c-notstarted .c-schedule .serial-num{
+	background: #7F94C3;
+	border-color: #AABADF;
+}
+
+/* 选中效果 */
+.checked-border{
+	border: 1px solid #FFA200;
+    box-shadow: 0px 0px 3px #FFA200 inset;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+	z-index: 4;
+	display: none;
+}
+/* 先用ID */
+#c-one{
+	width: 330px;
+	left: 220px;
+}
+#c-two{
+	width: 135px;
+	left: 553px;
+}
+#c-three{
+	width: 500px;
+	left: 691px;
+}
+#c-four{
+	width: 135px;
+	left: 1194px;
+}
+#c-five{
+	width: 135px;
+	left: 1450px;
+}
+#c-six{
+	width: 330px;
+	left: 300px;
+}
+#c-seven{
+	width: 580px;
+	left: 633px;
+}
+#c-eight{
+	width: 135px;
+	left: 1295px;
+}
+#c-nine{
+	width: 110px;
+    left: 220px;
+}
+#c-ten{
+	width: 300px;
+	left: 510px;
+}
+#c-eleven{
+	width: 200px;
+	left: 1015px;
+}
+#c-twelve{
+	left: 220px;
+}
+
+/* 当日日期分割区域 */
+.transparentBg{
+    width: 60%;
+    background: rgba(213, 222, 239, 0.3);
+    position: absolute;
+    top: 40px;
+	left: 0;
+	bottom: 0;
+}
+
+/*开始刻度线*/
+.orangeLine{
+    height: 100%;
+    border-left: 1px solid #FB0167;
+	position: absolute;
+	top: 0px;
+}
+.orangeLine>span{
+    color: #fff;
+    background: #FB0167;
+    border-radius: 20px;
+    display: block;
+    margin-left: -13px;
+	font-size: 12px;
+	padding: 1px 6px;
+	line-height: 1;
+	position: relative;
+}
+.orangeLine>span:after{
+    content: "";
+    border: 3px solid #FB0167;
+    border-left: 3px solid transparent;
+    border-top: 3px solid transparent;
+    border-bottom-right-radius: 1px;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.startDay{
+	left: 210px;
+}
+
+/* 结束刻度线 */
+.endDay{
+	left: 1395px;
+	border-left-style: dashed;
+}

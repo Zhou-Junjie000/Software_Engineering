@@ -1,0 +1,47 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 15,
+	"data": [
+		{
+			"supplier":"",
+			"costType": "1",
+            "num": "1",
+            "unit": "票",
+			"currency": "美国美元",
+            "rate": "1200.00",
+            "amount": "1200.00",
+            "rate2": "6.8",
+			"amount2":"8160.00",
+			"remarks":"汇率6.8核算20GP",
+			"operate":""
+		},
+		{
+			"supplier":"",
+			"costType": "1",
+            "num": "1",
+            "unit": "票",
+			"currency": "美国美元",
+            "rate": "1200.00",
+            "amount": "1200.00",
+            "rate2": "6.8",
+			"amount2":"8160.00",
+			"remarks":"汇率6.8核算20GP",
+			"operate":""
+		},
+		{
+			"supplier":"",
+			"costType": "1",
+            "num": "1",
+            "unit": "票",
+			"currency": "美国美元",
+            "rate": "1200.00",
+            "amount": "1200.00",
+            "rate2": "6.8",
+			"amount2":"8160.00",
+			"remarks":"汇率6.8核算20GP",
+			"operate":""
+        }
+        
+	]
+}

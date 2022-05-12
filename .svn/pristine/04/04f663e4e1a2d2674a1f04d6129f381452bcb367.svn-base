@@ -1,0 +1,720 @@
+@charset "utf-8";
+.statistics-report-mt{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #fff;
+    overflow: auto;
+}
+.top-shadow{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+.top-shadow::before{
+    content: "";
+    width: 200vw;
+    height: 105vh;
+    background: radial-gradient(ellipse, rgba(239, 243, 249, 1) 0, rgba(239, 243, 249, 0.03) 60%);
+    display: block;
+    border-radius: 120%;
+    opacity: 0.3;
+    position: absolute;
+    left: 50%;
+    top: -22vw;
+    transform: translateX(-50%);
+}
+
+/* 统计筛选条件 */
+.screen-report{
+   padding: 15px 0;
+   border-radius: 5px;
+   box-shadow: 0px 3px 6px rgba(92, 105, 137, 0.03);
+   position: relative;
+   background: #fff;
+   width: 100%;
+   font-size: 0;
+}
+.screen-report::before{
+    content: "";
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(rgba(239,243,249,0.3),transparent);
+    display: block;
+    position: absolute;
+    top: 0;
+}
+.screen-colum{
+    padding: 0 18px;
+    display: inline-block;
+    float: left;
+    height: 65px;
+}
+.screen-colum:not(:first-of-type){
+    border-left: 1px dashed #D5DEEF;
+}
+.screen-colum *{
+    font-size: 14px;
+}
+.colum-title{
+    font-size: 12px;
+    color: #5C6989;
+    margin-bottom: 10px;
+}
+/* 多选下拉框 */
+.multi-select{
+    width: 220px;
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+}
+.multi-select:last-of-type{
+    margin-right: 0px;
+}
+.multi-select .icon-weibiaoti2fuzhi01{
+    font-size: 18px;
+}
+/* 清空input按钮 */
+.clear-input-btn{
+    right: 36px;
+}
+.clear-input-btn i.iconfont{
+    font-size: 16px;
+}
+/* 日期框 */
+.colum-laydate{
+    width: 260px;
+    position: relative;
+}
+
+/* 复选框 */
+.colum-checkbox .define-checkbox+.layui-form-checkbox{
+    margin-right: 8px;
+    margin-top: 6px;
+}
+.colum-checkbox .define-checkbox+.layui-form-checkbox i, .simulation-checkbox i {
+    right: -11px;
+    top: 15px;
+}
+.colum-checkbox .define-checkbox+.layui-form-checkbox:last-of-type{
+    margin-right: 0px;
+}
+
+/* 单选框 */
+.colum-radio .layui-form-radio{
+    margin-bottom: 0;
+    padding-right: 5px;
+    margin-top: 6px;
+}
+
+/* 查询按钮 */
+.screen-report .form-operate-btns .layui-btn{
+   margin: 0 16px 0 0;
+   padding: 0 22px;
+}
+.screen-report .form-operate-btns .retract-btn{
+    background: transparent;
+    border-color: #1F65EB;
+    color: #1F65EB;
+}
+.screen-report .form-operate-btns .retract-btn:hover {
+    box-shadow: 0px 3px 5px rgba(31, 101, 235, 0.2);
+}
+
+.report-left{
+    width: 72%;
+    padding: 30px 30px 0;
+    position: relative;
+}
+/* 左侧收入类统计图 */
+.rl-echarts-top{
+    /* padding: 30px; */
+}
+.report-title{
+    position: relative;
+    height: 28px;
+}
+.report-title .line-after-span::after{
+    bottom: 0px;
+}
+.rt-until{
+    color: #5C6989;
+    font-size: 13px;
+}
+.report-title .layui-form-radio {
+    margin-top: 0px;
+    margin-right: 0;
+}
+
+/* echarts 图例 */
+.right-echart-legend,.right-table-legend{
+    color: #7F94C3;
+    margin-top: 8px;
+}
+.right-echart-legend li{
+    float: left;
+    margin-left: 20px;
+}
+.right-echart-legend .echart-block{
+    width: 10px;
+    height: 8px;
+    display: inline-block;
+    background: linear-gradient(#77C9FF,#0055FF);
+}
+.right-echart-legend li:nth-child(2) .echart-block{
+    background: linear-gradient(#FFE3B4,#FFB300);
+}
+.right-echart-legend li:nth-child(3) .echart-block{
+    background: linear-gradient(#FFD7A4,#FF6927);
+}
+.right-echart-legend li:nth-child(4) .echart-block{
+    background: linear-gradient(#B8C1DB,#6E7380);
+}
+
+.income-echarts{
+    height: 280px;
+    margin: 20px 0 40px;
+}
+
+/* 统计图列表 */
+.right-table-legend li{
+    float: left;
+    margin-left: 30px;
+}
+.right-table-legend .table-block{
+    width: 3px;
+    height: 12px;
+    display: inline-block;
+}
+.right-table-legend li:nth-child(1){
+    color: #FB0101;
+}
+.right-table-legend li:nth-child(1) .table-block{
+    background: #FB0101;
+}
+.right-table-legend li:nth-child(2){
+    color: #50EF00;
+}
+.right-table-legend li:nth-child(2) .table-block{
+    background: #50EF00;
+}
+
+/* 统计列表 */
+.income-table{
+    margin-top: 20px;
+}
+.income-table .layui-table-view {
+    border-top: none;
+}
+.income-table .layui-table-header {
+    background: #FAFCFD;
+    border-bottom: none;
+}
+.income-table .layui-table-view .layui-table th {
+    padding: 6px 0;
+    color: #7F94C3;
+    border-right: none;
+    border-top: 2px solid #fff;
+}
+.income-table .layui-table-view .layui-table td {
+    padding: 13px 0;
+    border-right: none;
+    border-bottom: 1px dashed #F0F3F9;
+}
+.income-table .layui-table-view .layui-table th.active{
+   background: #EFF4FC;   
+   color: #1F65EB; 
+   border-top-color: #1F65EB;
+}
+.income-table .layui-table-view .layui-table td.active{
+    background: #FAFCFF;
+}
+/* 最大值 */
+.income-table .layui-table-view .layui-table td.max-num{
+    color: #FB0101;
+}
+/* 最小值 */
+.income-table .layui-table-view .layui-table td.min-num{
+    color: #50EF00;
+}
+/* 右侧统计明细 */
+.report-right{
+    width: 28%;
+    padding: 30px 20px 0;
+    position: relative;
+    background: rgba(209, 217, 235, 0.06);
+    height: calc(100% - 95px);
+    box-shadow: 0px 3px 6px rgba(92, 105, 137, 0.06);
+    border-radius: 5px;
+}
+
+/* 日期切换 */
+.report-date{
+    color: #5C6989;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.rd-prev i.iconfont,.rd-next i.iconfont{
+    display: inline-block;
+    transform: rotate(90deg);
+    font-size: 12px;
+    cursor: pointer;
+}
+/* 禁用效果 */
+.rd-prev.disabled i.iconfont,.rd-next.disabled i.iconfont{
+    color: #ddd;
+    cursor: not-allowed;
+}
+.rd-next i.iconfont{
+    transform: rotate(-90deg);
+}
+.rd-date{
+    padding: 0 24px;
+}
+.f-month{
+    margin-left: 10px;
+}
+
+/* 各部门人员收入情况合计 */
+.depart-income{
+    margin: 20px 0;
+}
+.depart-income>h2{
+    font-weight: bold;
+    font-size: 32px;
+    color: #FFA200;
+    line-height: 42px;
+    margin-bottom: 8px;
+    text-shadow: 0px 3px 3px rgba(255,162,0,0.2);
+    margin-left: -5px;
+}
+.di-text{
+    font-size: 14px;
+    color: #7F94C3;
+}
+
+/* 同比 环比 */
+.compare-income>li{
+   background: #fff;
+   box-shadow: 0px 3px 6px rgba(238,240,246,0.3);
+   border-radius: 10px;
+   margin-right: 16px;
+   width: calc(50% - 8px);
+   float: left;
+   padding: 18px;
+   margin-bottom: 20px;
+}
+.compare-income>li:nth-child(2n){
+    margin-right: 0px;
+}
+.compare-title{
+    font-size: 14px;
+    color: #7F94C3;
+}
+.income-num{
+    color: #5C6989;
+    font-size: 22px;
+    margin: 12px -3px 10px;
+}
+
+/* 上升状态 */
+.rise-state{
+    color: #FB0167;
+}
+.rise-state i.iconfont{
+    display: inline-block;
+    transform: rotate(180deg);
+    vertical-align: bottom;
+}
+/* 下降状态 */
+.decline-state{
+    color: #50EF00;
+}
+/* 明细tab */
+.income-card{
+    padding: 0 20px 20px;
+    background: #fff;
+    box-shadow: 0px 3px 6px rgba(238,240,246,0.3);
+    border-radius: 10px;
+    width: 100%;
+    float: left;
+}
+.income-card .layui-tab-bar{
+    display: none;
+}
+.layui-tab-title {
+    height: 50px;
+    padding: 15px 0;
+    border: none;
+}
+.layui-tab-title li {
+    padding: 0 45px 0 0;
+    color: #5C6989;
+    line-height: 16px;
+    border: none;
+}
+.layui-tab-title li .yellow-color {
+    margin-left: 5px;
+}
+.layui-tab-brief>.layui-tab-title .layui-this {
+    color: #000000;
+}
+.layui-tab-title .layui-this:after {
+    left: 0px;
+    width: 30px;
+    height: 30px;
+}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after {
+    border-bottom: 2px solid #FFA200;
+}
+.layui-tab-content {
+    padding: 0;
+}
+.layui-tab {
+    margin: 0;
+}
+
+.detailed-list{
+    height: 355px;
+    overflow: auto;
+}
+.detailed-list>li{
+   padding: 12px 0;
+   border-bottom: 1px dashed #EAEEF7;
+}
+.detailed-list .detailed-item{
+    overflow: hidden;
+}
+/* 序号 */
+.list-number{
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    border: 1px solid #F2F4F9;
+    transform: rotate(45deg);
+    margin-left: -38px;
+}
+.ln-block{
+    background: #EFF3F9;
+    border-radius: inherit;
+    width: 53px;
+    height: 53px;
+    margin: 7px;
+    color: #5C6989;
+    position: relative;
+}
+.ln-block>span{
+    display: inline-block;
+    transform: rotate(-45deg);
+    top: 8px;
+    right: 12px;
+    position: absolute;
+}
+.ln-desc>h3{
+    color: #5C6989;
+    margin-bottom: 10px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+.ln-desc>p{
+    font-size: 13px;
+}
+.ln-desc>p>label{
+    color: #7F94C3;
+}
+.ln-desc>p>span{
+    color: #FF7D19;
+    margin-right: 50px;
+}
+.ln-desc>p>span:last-child{
+    margin-right: 0px;
+}
+.ln-desc{
+    margin: 14px 0px 0 16px;
+    width: 88%;
+}
+.detailed-list>li:nth-child(1) .list-number{
+   border-color: #FFF6EF;
+}
+.detailed-list>li:nth-child(1) .ln-block{
+    background: #FFF3E9;
+    color: #FF6D19;
+}
+.detailed-list>li:nth-child(2) .list-number{
+    border-color: #FFF8EC;
+ }
+ .detailed-list>li:nth-child(2) .ln-block{
+     background: #FFEDCE;
+     color: #FFA200;
+ }
+ .detailed-list>li:nth-child(3) .list-number{
+    border-color: #F0F6FF;
+ }
+ .detailed-list>li:nth-child(3) .ln-block{
+     background: #E9F3FF;
+     color: #5FA3FF;
+ }
+
+ @media screen and (max-width:1530px){
+     /* 筛选条件 */
+    .screen-report {
+        padding: 10px 0;
+    }
+    .screen-colum {
+        height: 60px;
+        padding: 0 15px;
+    }
+    .screen-colum * {
+        font-size: 13px;
+    }
+    .colum-title {
+        margin-bottom: 8px;
+    }
+    .colum-laydate,.multi-select {
+        width: 190px;
+    }
+    .multi-select .icon-weibiaoti2fuzhi01 {
+        font-size: 13px;
+    }
+    .clear-input-btn {
+        right: 31px;
+    }
+    .clear-input-btn i.iconfont {
+        font-size: 12px;
+    }
+    .multi-select .personnel-icon .icon-system_security_user {
+        vertical-align: -2px;
+    }
+    .colum-checkbox .define-checkbox+.layui-form-checkbox span{
+        min-width: 65px;
+    }
+    .colum-checkbox .define-checkbox+.layui-form-checkbox i{
+        right: -9px;
+        border-width: 10px;
+    }
+    .colum-checkbox .define-checkbox+.layui-form-checkbox .layui-icon-ok:before{
+        top: -6px;
+        left: -11px;
+    }
+    .screen-report .form-operate-btns .layui-btn {
+        margin: 0 12px 0 0;
+        padding: 0 16px;
+        font-size: 13px;
+    }
+
+    /* 左侧统计图 */
+    .report-left {
+        padding: 20px 20px 0;
+    }
+    .report-title {
+        height: 25px;
+        font-size: 13px;
+    }
+    .income-echarts {
+        height: 190px;
+        margin: 15px 0 25px;
+    }
+    /* 明细列表 */
+    .income-table .layui-table-view .layui-table td {
+        padding: 10px 0;
+    }
+
+    .report-title .layui-form-radio * {
+        font-size: 13px;
+    }
+    /* 右侧统计明细 */
+    .report-right {
+        padding: 20px 15px 0;
+        height: calc(100% - 80px);
+    }
+    .depart-income {
+        margin: 15px 0;
+    }
+    .depart-income>h2 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+    .di-text {
+        font-size: 13px;
+    }
+    .compare-income>li {
+        border-radius: 8px;
+        margin-right: 12px;
+        width: calc(50% - 6px);
+        padding: 14px;
+        margin-bottom: 15px;
+    }
+    .compare-title,.compare-state {
+        font-size: 13px;
+    }
+    .income-num {
+        font-size: 20px;
+    }
+    .compare-state i.iconfont {
+        font-size: 13px;
+    }
+    /* 明细tab */
+    .income-card {
+        padding: 0 15px 15px;
+    }
+    .list-number {
+        width: 56px;
+        height: 56px;
+        margin-left: -34px;
+        border-radius: 8px;
+    }
+    .ln-block {
+        width: 44px;
+        height: 44px;
+        margin: 5px;
+        font-size: 13px;
+    }
+    .ln-block>span {
+        top: 6px;
+        right: 8px;
+    }
+    .ln-desc {
+        margin: 10px 0px 0 14px;
+    }
+    .detailed-list {
+        height: 265px;
+    }
+ }
+
+  /* 1920*1080放大125% */
+  @media screen and (max-width:1460px) and (max-height:630px){
+    .colum-checkbox .define-checkbox+.layui-form-checkbox i {
+        right: -10px;
+        top: 16px;
+    }
+    .income-table {
+        margin-top: 15px;
+    }
+    .income-echarts {
+        height: 180px;
+    }
+    .income-table .layui-table-view .layui-table td {
+        padding: 8px 0;
+    }
+    .detailed-list {
+        height: 225px;
+    }
+ }
+
+ @media screen and (max-width:1290px){
+     /* 筛选条件 */
+    .colum-laydate, .multi-select {
+        width: 170px;
+    }
+    .screen-colum {
+        padding: 0 10px;
+        height: 50px;
+    }
+    .screen-colum * {
+        font-size: 12px;
+    }
+    .screen-colum .layui-input{
+        height: 30px;
+        line-height: 30px;
+    }
+    .colum-checkbox .define-checkbox+.layui-form-checkbox span {
+        min-width: 50px;
+        font-size: 12px;
+    }
+    .colum-checkbox .define-checkbox+.layui-form-checkbox {
+        margin-right: 6px;
+        margin-top: 4px;
+    }
+    .colum-checkbox .define-checkbox+.layui-form-checkbox {
+        height: 22px;
+        line-height: 20px;
+    }
+    .colum-checkbox .define-checkbox+.layui-form-checkbox i{
+        top: 12px;
+    }
+    .colum-radio .layui-form-radio {
+        padding-right: 0px;
+        margin-top: 3px;
+    }
+    .colum-laydate, .multi-select {
+        width: 160px;
+    }
+
+    .report-title {
+        font-size: 12px;
+    }
+    .line-after-span::after {
+        width: 25px;
+    }
+    .report-left {
+        padding: 15px 15px 0;
+    }
+    /* 收入统计图 */
+    .income-echarts {
+        height: 140px;
+        margin: 10px 0 20px;
+    }
+    /* 明细列表 */
+    .income-table {
+        margin-top: 10px;
+    }
+    .income-table .layui-table-view .layui-table td {
+        padding: 5px 0;
+    }
+
+    /* 统计明细 */
+    .report-right {
+        padding: 15px 12px 0;
+        height: calc(100% - 70px);
+    }
+    .depart-income>h2 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .compare-title, .compare-state, .di-text  {
+        font-size: 12px;
+    }
+    .compare-state i.iconfont {
+        font-size: 12px;
+    }
+    .income-num {
+        font-size: 16px;
+        margin: 10px -3px 5px;
+    }
+    .compare-income>li {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    /* 明细tab */
+    .income-card {
+        padding: 0 12px 12px;
+    }
+    .layui-tab-title li {
+        padding: 0 30px 0 0;
+        font-size: 12px;
+    }
+    .layui-tab-title .layui-this:after {
+        width: 26px;
+        height: 26px;
+    }
+    .ln-desc {
+        width: 86%;
+    }
+    .ln-desc>h3 {
+        margin-bottom: 8px;
+        font-size: 12px;
+    }
+    .ln-desc>p {
+        font-size: 12px;
+    }
+    .ln-desc>p>span {
+        margin-right: 30px;
+    }
+    .detailed-list {
+        height: 175px;
+    }
+ }

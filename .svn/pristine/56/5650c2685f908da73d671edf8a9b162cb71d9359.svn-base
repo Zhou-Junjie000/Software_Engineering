@@ -1,0 +1,10 @@
+package com.xlf.modules.book.service;
+
+import com.xlf.common.base.mybatis.MybatisEntityService;
+import com.xlf.common.vo.PageVo;
+import com.xlf.modules.book.entity.Book;
+
+public interface BookService extends MybatisEntityService<Book, Integer>{
+
+	PageVo page2(PageVo pageVo, Book entity);
+}

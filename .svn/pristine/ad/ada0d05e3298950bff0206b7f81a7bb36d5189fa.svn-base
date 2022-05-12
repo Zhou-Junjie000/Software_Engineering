@@ -1,0 +1,214 @@
+
+@charset "utf-8";
+/* 顶部有效工作日计算  */
+.info-top{
+	background: #F9FBFE;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 12px 0;
+    color: #7F94C3;
+}
+.info-top>span{
+	margin-right: 30px;
+}
+.info-top>span>i{
+	color: #1F65EB;
+	margin: 0 3px;
+}
+/* 
+查询条件 */
+.work-demand-search{
+	display: flex;
+    align-items: center;
+    /* margin-bottom: 12px; */
+}
+.work-demand-search>label:not(:first-child) {
+	margin-left:30px;
+}
+.work-demand-search>input{
+	width: 220px;
+}
+.work-demand-search .search-btn{
+    height: 32px;
+    line-height: 32px;
+    margin-left: 12px;
+}
+.formSelects-div{
+	width: 250px;
+}
+
+/* 表格样式 */
+.layui-table{
+	margin: 0px;
+}
+.layui-table-view .layui-table .layui-table-cell{
+	height: auto;
+	padding: 0 10px;
+}
+.layui-table-view .layui-table tr.expend>td{
+	padding: 12px 12px 0 12px;
+}
+.layui-table-view .layui-table tr.expend:not(.btn-tr)>td{
+    border: none; 
+}
+.layui-btn.add-btn{
+	width:100%;
+    background: transparent;
+    border: 1px dashed #59A0FF;
+    color: #1F65EB;
+    opacity: 1;
+    height: 36px;
+    line-height: 34px;
+    margin-bottom: 12px;
+}
+
+/* 保存 编辑按钮 */
+.layui-table-cell .layui-btn{
+    background: #59A0FF;
+    border-radius: 20px;
+    min-width: 45px;
+    margin: 0 3px;
+}
+/* 工作量需求分摊嵌入表格样式 */
+.expend{
+	width: 80%;
+	margin-top: 20px;
+}
+.expend .layui-border-box.layui-table-view{
+	display:flex;
+}
+.expend.data-more,
+.expend.btn-tr{
+	border-left: 1px solid #89AAE8;
+}
+/* .expend .layui-border-box.layui-table-view::before,
+.expend .layui-border-box.layui-table-view::after{
+	height:100%;
+	width: 1px;
+	display: inline-block;
+	content:'';
+	background:#89AAE8;
+} */
+/* .expend.btn-tr .add-btn::before,
+.expend.btn-tr .add-btn::after{
+	height:100%;
+	width: 1px;
+	display: inline-block;
+	content:'';
+	background:#89AAE8;
+	position: absolute;
+} */
+.expend.btn-tr .add-btn::before{
+	left: 0;
+}
+.expend.btn-tr .add-btn::after{
+	right: 0;
+}
+/* .expend .layui-border-box.layui-table-view::after{
+	transform: translateX(-2px) translateY(-1px);
+} */
+.expend.viewRow .layui-table-body.layui-table-main tr:last-child td{
+	border-bottom-color: #89aae8;
+}
+.expend-table-self td:last-child .layui-table-cell{
+	border-right: 1px solid #89AAE8;
+}
+.layui-form[lay-id="tableOut"]{
+	height:100%;
+}
+.expend .layui-table-view{
+	border-top:none;
+}
+.expend .layui-table-header{
+	border-bottom-color: #d5deef;
+}
+.layui-table-view .layui-table tr.expend>td{
+	padding: 0;
+}
+.layui-table-view .layui-table .expend-table-self-prev td{
+	border-bottom-color:#89AAE8;
+}
+.expend-table-self{
+	box-shadow: 0px 2px 15px #e6e3e3;
+    position: relative;
+    z-index: 2;
+}
+.expend-table-self td:first-child{
+	border-left: 1px solid #89AAE8;
+}
+.expend-table-self td:last-child{
+	border-right: 1px solid #89AAE8;
+}
+.layui-table-view .layui-table .expend-table-self td{
+	color:#1F65EB;
+	background: #EEF4FF;
+}
+.expend{
+	border-top: none;
+	border-bottom:none;
+}
+.expend.btn-tr td{
+	border-bottom: 1px solid #89AAE8;
+}
+.expend-table-self .layui-table-cell .layui-btn[lay-event="cancel"]{
+	background: #fff;
+	border: 1px solid #59A0FF;
+	color: #59A0FF;
+	line-height: 20px;
+}
+.in-table-div{
+	width: 80%;
+	margin: 10px auto;
+}
+.expend .add-btn{
+	width: 80%;
+}
+.in-table-div .layui-table-view .layui-table th{
+	background: #08325D;
+	color: #FBFCFC;
+}
+.in-table-div .layui-table-col-special .layui-btn{
+	background: #fff;
+	color: #59A0FF;
+}
+.in-table-div>td{
+	border-right: 1px solid #89aae8;
+}
+.in-table-div .layui-table-view .layui-table th .layui-table-cell{
+	text-align: left;
+    padding-left: 10px;
+}
+.layui-table-view .layui-table tr.expend.viewRow:not(.btn-tr)>td{
+    border-left: 1px solid #89aae8 ;
+    border-bottom: 1px solid #89aae8 ;
+}
+.layui-table-view .layui-table tr.expend:not(.btn-tr)>td,
+.layui-table-view .expend.btn-tr{
+	border-right: 3px solid #89aae8 ;
+}
+/* .layui-table-view[lay-id="tableOut"] .layui-table-box>.layui-table-body{
+	overflow-x: hidden;
+} */
+.layui-table tbody .table-item.expend:hover{
+	background-color: #fff !important;
+	box-shadow:none;
+}
+.in-table-div tr th:first-child,
+.in-table-div .layui-table-body tr td:first-child{
+	border-left: 1px solid #89aae8;
+}
+.in-table-div tr th:last-child,
+.in-table-div .layui-table-body tr td:last-child{
+	border-right: 1px solid #89aae8;
+}
+.in-table-div .layui-form-select dl{
+	max-width: 100%;
+}
+@media screen and (max-width: 1286px){
+	.formSelects-div{
+		width: 190px !important;
+	}
+	.demandTime{
+		width: 180px !important;
+	}
+}

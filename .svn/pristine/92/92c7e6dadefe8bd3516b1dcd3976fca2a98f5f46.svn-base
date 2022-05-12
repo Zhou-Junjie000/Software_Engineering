@@ -1,0 +1,14 @@
+package com.xlf.modules.dataMaintenance.entity;
+
+import java.util.List;
+
+import lombok.Data;
+@Data
+public class SupportOffice{
+	String year;
+	String month;
+	List<?> resList;//资源
+	List<?> workList;//gogndna
+	SupportStatisticalData resTotle;
+	SupportStatisticalData workTotle;
+}

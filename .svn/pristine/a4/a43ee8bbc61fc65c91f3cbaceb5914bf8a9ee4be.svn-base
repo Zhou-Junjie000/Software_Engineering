@@ -1,0 +1,8 @@
+package com.xlf.modules.book.service;
+
+import com.xlf.common.base.mybatis.MybatisEntityService;
+import com.xlf.modules.book.entity.Book;
+
+public interface BookService extends MybatisEntityService<Book, Integer>{
+
+}

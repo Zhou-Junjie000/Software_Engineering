@@ -1,0 +1,21 @@
+@ /* 引用的文件路径，{}其它应用的属性对象集合*/
+@layout("/common/_container_list.html",
+@	{
+@		js:["/modules/userManager/list.js"],
+@		title: '用户管理列表',
+@		entity:{
+@			tag:'userManager',
+@			delBtnHide:true,
+@			name: '用户',
+@			fastsearch: true,
+@			fsPlaceholder: '请输入登录名',
+@			fsPlaceholderField: 'search'
+@		}
+@	}){
+	<!-- 操作 -->
+	<script type="text/html" id="toolbar">
+     	<a class="layui-btn layui-btn-radius layui-add-btn add_btn" title="新增"><i class="iconfont icon-xinjian"></i></a>
+		<a class="layui-btn layui-btn-radius layui-remark-btn " id="remake_btn" title="重置密码"><i class="iconfont icon-xiugaimima"></i></a>
+     
+	</script>
+@}

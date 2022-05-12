@@ -1,0 +1,23 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 15,
+	"data": [
+		{
+			"entryName": "中外运空运发展股份有限公司安徽分公司",
+            "score": "5.0分",
+            "cycle": "15个月",
+			"projectManager": "郭德纲",
+			"salesManager": "于谦",
+			"contractAmount": "$15,880,000.00"
+        },
+        {
+			"entryName": "中外运空运发展股份有限公司安徽分公司又长又短",
+            "score": "5.0分",
+            "cycle": "15个月",
+			"projectManager": "郭德纲",
+			"salesManager": "于谦",
+			"contractAmount": "$15,880,000.00"
+		}
+	]
+}

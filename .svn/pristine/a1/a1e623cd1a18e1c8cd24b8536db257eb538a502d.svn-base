@@ -1,0 +1,40 @@
+{
+	"code": 1,
+	"msg": "",
+	"count": 15,
+	"data": [
+		{
+			"orderNo": 1,
+			"logType":"NORMAL",
+            "startTime": "2020-4-30 08:30:00",
+            "endTime": "2020-4-30 12:00:00",
+			"duration": "3.5",
+            "pt": "1101",
+            "subject": "政企支撑",
+            "workContent": "编写静态页面",
+            "operate":""
+        },
+        {
+			"orderNo": 2,
+			"logType":"NORMAL",
+            "startTime": "2020-4-30 13:30:00",
+            "endTime": "2020-4-30 18:00:00",
+			"duration": "4.5",
+            "pt": "1101",
+            "subject": "政企支撑",
+            "workContent": "编写静态页面2",
+            "operate":""
+        },
+        {
+			"orderNo": 3,
+			"logType":"LEAVE",
+            "startTime": "2020-5-1 13:30:00",
+            "endTime": "2020-5-1 18:00:00",
+			"duration": "4.5",
+            "pt": "我要请假啊 ",
+            "subject": "政企支撑",
+            "workContent": "编写静态页面3",
+            "operate":""
+        }
+	]
+}

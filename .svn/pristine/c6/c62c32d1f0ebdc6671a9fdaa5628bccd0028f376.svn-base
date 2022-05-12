@@ -1,0 +1,22 @@
+package com.xlf.common.easyexcel;
+
+import java.util.List;
+
+/**
+ * 
+ * @Description:excel校验接口
+ * @author: songpeng 
+ * @date: date{time} （日期）
+ */
+public interface ExcelCheckManager<T> {
+
+    /**
+     * 
+     * @Description:校验方法
+     * @param: @param objects
+     * @param: @return      
+     * @return: ExcelCheckResult      
+     * @throws
+     */
+    ExcelCheckResult checkImportExcel(List<T> objects,String sheetName);
+}

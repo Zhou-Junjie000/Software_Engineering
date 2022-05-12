@@ -1,0 +1,77 @@
+@layout("/common/_container.html",{js:["/modules/course/add.js"]}){
+<form class="layui-form" lay-filter="form">
+	<div class="layer-contain">
+		<div class="sheet-title">
+			<span>基本信息</span>
+		</div>
+		<div class="sheet-item clearfix">
+			<div class="layui-div-form clearfix" style="width:82%;">
+				<input type="hidden" name="id" id="id">
+				
+				<div class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>课程名称：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<input type="text" class="layui-input name" lay-verify="required"
+							placeholder="请输入课程名称" name="name">
+					</div>
+				</div>
+				<div class="layui-form-item  layui-col-xs12 layui-col-md12">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>课程简介：</label>
+					<div class="layui-input-block layui-input-textarea"  >
+						<textarea class="layui-textarea" id="info" name="info" value="" lay-verify="required"></textarea>
+					</div>
+				</div>
+				<div class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>上课日期：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<input type="text" class="layui-input name" lay-verify="required"
+							placeholder="请输入上课日期" name="day">
+					</div>
+				</div>
+				<div class="layui-form-item layui-col-xs6 layui-col-md6" id="phone_div">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>上课时间：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<input type="text" class="layui-input name" lay-verify="required"
+							placeholder="请输入上课时间" name="time" id="time">
+					</div>
+				</div>
+				<div class="layui-form-item layui-col-xs6 layui-col-md6">
+					<label class="layui-form-label"><span
+						class="mandatory-mark"></span>场地：</label>
+					<div class="layui-input-block layui-input-textarea">
+						<select name="area" lay-filter="chargeman" lay-search  lay-verify="required">
+							<option value="">请选择场地</option>
+							@for(obj in dict.listBySql("select  fldkey,value from t_dict_data  where dict_type = 'area' order by ordernum")){
+							<option value="${obj.fldkey}">${obj.value}</option>
+							@}
+			   			</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="btns-footer form-operate-btns">
+		<button class="layui-btn layui-btn-sm basic-btn"
+			lay-submit="addNotice" lay-filter="addEntity">确认</button>
+		<button class="layui-btn layui-btn-sm basic-btn layui-btn-primary"
+			type="reset">重置</button>
+		<button class="layui-btn layui-btn-sm basic-btn layui-btn-primary"
+			type="reset" id="close">关闭</button>
+	</div>
+</form>
+<script type="text/javascript">
+	var Entity = {
+		tag : "course",
+		name : "课程",
+	}
+	//页面常量
+	var PAGE_CONSTANT = {
+		id:'${id}',
+		roleId:'${roleId}'
+	};
+</script>
+@}

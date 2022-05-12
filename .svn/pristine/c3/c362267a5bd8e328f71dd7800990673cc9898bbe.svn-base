@@ -1,0 +1,21 @@
+package com.xlf.modules.book.entity;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Table(name = "t_book")
+public class Book {
+
+	@Id
+	private Integer id;
+	private String type;
+	private String coachid;
+	private String courseid;
+	private String materialid;
+	private String starttime;
+	private String endtime;
+	private String userid;
+}

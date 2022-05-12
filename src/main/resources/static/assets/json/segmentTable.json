@@ -1,0 +1,64 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 15,
+	"data": [
+		{
+			"num": "1",
+            "type": "进口许可证办理",
+            "chargePerson": "岳云鹏",
+			"predecessors": "",
+            "startTime": "2018-12-01",
+            "schedule": "28",
+            "endTime": "2018-12-28",
+            "operate":""
+        },
+        {
+            "num": "2",
+            "type": "路线勘察",
+            "chargePerson": "岳云鹏",
+			"predecessors": "3",
+            "startTime": "2019-04-01",
+            "schedule": "36",
+            "endTime": "2019-05-06",
+            "operate":""
+        },
+        {
+            "num": "3",
+            "type": "运输许可证办理",
+            "chargePerson": "郭小宝",
+			"predecessors": "1",
+            "startTime": "2019-01-01",
+            "schedule": "20",
+            "endTime": "2019-01-20",
+            "operate":""
+        },{
+            "num": "4",
+            "type": "港口仓库装箱",
+            "chargePerson": "岳云鹏",
+			"predecessors": "",
+            "startTime": "2018-12-05",
+            "schedule": "42",
+            "endTime": "2019-01-15",
+            "operate":""
+        },{
+            "num": "5",
+            "type": "装船",
+            "chargePerson": "孙越",
+			"predecessors": "",
+            "startTime": "2018-12-01",
+            "schedule": "28",
+            "endTime": "2018-12-28",
+            "operate":""
+        },{
+            "num": "6",
+            "type": "装火车",
+            "chargePerson": "",
+			"predecessors": "",
+            "startTime": "2018-12-01",
+            "schedule": "28",
+            "endTime": "2018-12-28",
+            "operate":""
+        }
+	]
+}

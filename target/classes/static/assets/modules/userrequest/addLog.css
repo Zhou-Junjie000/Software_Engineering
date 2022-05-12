@@ -1,0 +1,71 @@
+@charset "utf-8";
+.wrapperwrapper{
+	padding: 10px;
+	height: 100%;
+}
+.add-wrapper .layui-form{
+	height: 100%;
+	overflow: auto;
+}
+/* 表格样式 */
+#addLog thead th,
+#addLog tbody td{
+	padding: 5px;
+}
+#addLog thead th{
+	padding: 8px;
+}
+#addLog .layui-input-block{
+	margin-left: 0;
+	text-align: center;
+}
+#addLog .layui-input-block .icon-riqi{
+	position: absolute;
+	right: 5px;
+	top: 11px;
+}
+#addLog .layui-input-block .layui-textarea{
+	min-height: 80px;
+}
+#addLog .leave-label{
+	width: 100px;
+}
+#addLog .leave-reason{
+	width: calc(100% - 100px);
+	display: inline-block;
+}
+/* 两个添加按钮 */
+.double-btn-group .layui-col-md6{
+	text-align: center;
+}
+.double-btn-group .layui-col-md6:first-child button{
+	margin-right: 5px;
+}
+.double-btn-group .layui-col-md6:last-child button{
+	margin-left: 5px;
+}
+.double-btn-group .layui-col-md6 button{
+	width: calc(100% - 10px);
+	height: 40px;
+	line-height: 40px;
+	margin: 5px 0;
+	border: 1px dashed #59A0FF;
+	border-radius: 4px;
+	background-color: #fff;
+	color: #1F65EB;
+	font-size: 14px;
+}
+.double-btn-group .layui-col-md6 button>i {
+    margin-right: 5px;
+    font-size: 13px;
+}
+/* 保存提交按钮 */
+.bottom-btn{
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}

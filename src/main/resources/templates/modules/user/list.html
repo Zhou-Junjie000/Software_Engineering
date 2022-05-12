@@ -1,0 +1,22 @@
+@ /* 引用的文件路径，{}其它应用的属性对象集合*/
+@layout("/common/_container_list.html",
+@	{
+@		js:["/modules/user/list.js"],
+@		title: '自定义标题',
+@		entity:{
+@			tag:'user',
+@			name: '用户',
+@			fastsearch: true,
+@			fsPlaceholder: '请输入用户名',
+@			fsPlaceholderField: 'account',
+@			advsearch: true
+@		}
+@	}){
+	<!--操作-->
+	<script type="text/html" id="listBar">
+     <div class="operate-btns">
+		<a class="layui-btn layui-btn-xs layui-btn-edit" lay-event="edit" title="编辑"><i class="iconfont icon-xiugai"></i><div class="tip-title"><span>编辑</span></div></a>
+		<a class="layui-btn layui-btn-xs layui-btn-del" lay-event="del" title="删除"><i class="iconfont icon-delete"></i><div class="tip-title"><span>删除</span></div></a>
+     </div>	
+</script>
+@}

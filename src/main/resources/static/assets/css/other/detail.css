@@ -1,0 +1,1072 @@
+@charset "utf-8";
+.iframe-wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+/* 项目描述 */
+.project-desc{
+    margin-top: 15px;
+    background: #F9FBFD;
+    padding: 18px 0px 18px 20px;
+    margin-bottom: 5px;
+}
+.project-name{
+    line-height: 20px;
+}
+.project-name>span{
+    font-size: 19px;
+}
+.project-name .project-grade{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: #FFA200;
+    color: #ffffff;
+    font-size: 12px;
+    display: inline-block;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 5px;
+    vertical-align: text-bottom;
+}
+.project-name .state-indent{
+	margin-left: 5px;
+}
+/* 项目有关 */
+.project-contact{
+    font-size: 14px;
+    margin: 12px 0;
+    line-height: 19px;
+}
+.project-contact{
+    color: #5C6989;
+}
+.project-contact a{
+    color: #1F65EB;
+    margin-left: -3px;
+}
+.project-contact label{
+    padding-left: 40px;
+    position: relative;
+}
+.project-contact label:first-child{
+    padding-left: 0px;
+}
+.project-contact label:first-child:after{
+	display: none;
+}
+.project-contact label:after{
+    content: "";
+    width: 20px;
+    height: 18px;
+    display: inline-block;
+    border-right: 1px solid #D5DEEF;
+    transform: rotate(25deg);
+    position: absolute;
+    left: 0;
+    top: -3px;
+}
+.project-contact a:hover{
+    text-decoration: underline;
+}
+.project-contact a .lane{
+    color: #D5DEEF;
+    margin: 0 10px;
+}
+/* 项目计划时间 */
+.project-time{
+    font-size: 12px;
+    color: #5C6989;
+}
+.project-time i.iconfont{
+    font-size: 12px;
+    margin-right: 5px;
+    display: inline-block;
+    color: #7F94C3;
+}
+.project-time i.iconfont.icon-shijian1{
+    vertical-align: 1px;
+    transform: scale(1.1);
+}
+.project-time i.iconfont.icon-dizhi{
+    transform: scale(1.3);
+}
+.project-time span{
+    margin-right: 25px;
+    margin-left: -3px;
+}
+/* 右侧 */
+.pd-right {
+    height: 60px;
+    margin-top: 12px;
+}
+/* 项目表单 */
+.project-form{
+    line-height: 60px;
+    color: #1F65EB;
+    font-size: 14px;
+}
+.project-form a{
+    margin-right: 28px;
+    color: inherit;
+}
+.project-form a i.iconfont{
+    color: #7F94C3;
+    margin-right: 3px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+/* 项目操作 */
+.project-operate{
+    height: 100%;
+    border-left: 1px solid #D5DEEF;
+    padding: 15px 25px;
+}
+.project-operate button{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #7F94C3;
+    color: #7F94C3;
+    float: left;
+    margin-right: 15px;
+}
+.project-operate button:last-child{
+    margin-right: 0px;
+}
+.project-operate button i.iconfont{
+    font-size: 13px;
+    vertical-align: middle;
+}
+.project-operate button i.iconfont.icon-delete,.project-operate button i.iconfont.icon-pinglun-copy{
+    font-size: 15px;
+}
+/* 星级评价 */
+.project-rate{
+    padding:0 30px 0 30px;
+    color: #5C6989;
+    border-left: 1px solid #D5DEEF;
+    height: 100%;
+}
+.layui-rate+.layui-inline{
+   display: block;
+   font-size: 14px;
+}
+.layui-rate+.layui-inline span{
+    color: #FFA200;
+}
+
+
+/* 底部tab */
+.iframe-wrapper .layui-tab{
+    margin: 0;
+}
+.btab-title{
+    border-bottom: 1px solid #D5DEEF;
+    height: auto;
+    background: #fff;
+    margin-bottom: 10px;
+}
+/* 鼠标滚动指定位置样式 */
+.scroll-position .btab-title{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 3;
+    box-shadow: 0px 3px 6px rgba(31, 101, 235, 0.05);
+}
+.btab-title .layui-this:after{
+   display: none;
+}
+.layui-tab{
+	margin: 0px;
+}
+.btab-title li{
+    float: left;
+    line-height: 45px;
+    color: #5C6989;
+    padding: 0;
+}
+.btab-title li a{
+    padding: 0 20px;
+    border-right: 1px solid #D5DEEF;
+    line-height: 16px;
+    display: inline-block;
+    color: inherit;
+}
+.btab-title li:last-child a{
+	border-right: none;
+}
+.btab-title li .title-num{
+    color: #FFA200;
+    margin-left: 3px;
+}
+/* 选中状态 */
+.layui-tab-brief>.btab-title .layui-this{
+    /* font-size: 15px; */
+    color: #000000;
+}
+.btab-title li .title-name{
+    position: relative;
+}
+.btab-title li.layui-this .title-name::after{
+    content: "";
+    width: 20px;
+    border-bottom: 2px solid #FFA200;
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 底部tab内容区 */
+.layui-tab-content{
+    border: 5px solid rgba(213, 222, 239, 0.3);
+    padding: 15px;
+}
+.btabc-title{
+    width: 100%;
+    border-bottom: 1px solid #D5DEEF;
+    padding: 15px 0 15px 0;
+    position: relative;
+    font-size: 15px;
+}
+span.line-after-span::after{
+    bottom: 0;
+}
+/* 右侧滑出弹窗的tab */
+.popup-tab .layui-tab-title{
+    background: #ffffff;
+    position: absolute;
+    z-index: 2;
+    border-bottom: none;
+    top: 0px;
+}
+.popup-tab .layui-tab-content{
+	border: none;
+    padding: 0;
+    height: calc(100vh - 20px);
+}
+.popup-tab  .layui-tab-item {
+    height: 100%;
+}
+/* 选填内容页涉及 */
+.import-field label{
+	margin-left: 25px;
+	color: #5C6989;
+}
+.btabc-title>button{
+    background: rgba(213, 222, 239, 0.3);;
+    padding: 1px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+    color: #7F94C3;
+}
+.btabc-title>button i.iconfont{
+    font-size: 12px;
+}
+.btabc-contain{
+    height: calc(100% - 51px);
+    /* overflow: auto; */
+}
+
+
+/* 环节概述 */
+.subset-text{
+    margin-top: 8px;
+    padding: 15px 0;
+}
+.subset-operate{
+    color: #5C6989;
+}
+.subset-operate>div{
+    border-right: 1px solid #D5DEEF;
+}
+/* 月的时间插件 */
+.monthSelectDiv{
+      /* position: relative; */
+  /*     width: 300px; */
+      margin-top: 0;
+      border-right: none !important;
+      margin-top: -12px;
+      margin-bottom: 10px;
+}
+.date-group-div{
+    display: inline-block;
+    position: relative;
+    width: 300px;
+}
+.date-switch-btn{
+	width: 34px;
+	height: 34px;
+	border-radius: 100%;
+	background: #3377ff;
+	color: #fff;
+	line-height: 30px;
+    text-align: center;
+}
+.date-switch-btn i.iconfont{
+    display: inline-block;
+    transform: rotate(90deg) translateY(2px);
+    font-size: 14px;
+}
+.date-next-btn i.iconfont{
+    transform: rotate(-90deg) translateY(3px);
+}
+.monthSelectDiv .trigger-date-btn{
+    right: 0;
+    margin-right: 12px;
+    position: absolute;
+}
+.cei-title .monthSelectDiv{
+    margin-bottom: -2px;
+}
+.subset-operate>.date-switch{
+    border-right: none;
+}
+.subset-operate>.date-switch span{
+    cursor: pointer;
+}
+.subset-operate label{
+    margin-right: 5px;
+    margin-left: 30px;
+    font-size: 14px;
+}
+.subset-operate span{
+    margin-right: 25px;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+}
+.subset-operate span.active{
+    color: #000000;
+}
+.subset-operate .fix-text{
+    position: relative;
+    padding-bottom: 6px;
+    cursor: pointer;
+}
+.subset-operate span.active .fix-text::after,.date-switch .fix-text.active::after{
+    content: "";
+    width: 16px;
+    border-bottom: 2px solid #FFA200;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.circle-ident{
+    width: 11px;
+    height: 11px;
+    border-radius: 100%;
+    border: 1px solid transparent;
+    margin-right: 3px;
+    display: inline-block;
+}
+/* 完成 */
+.finished-ident{
+    background: #11CB4F;
+    border-color: #2DEE6D !important;
+}
+/* 进行中 */
+.ongoing-ident{
+    background: #FFBD23;
+    border-color: #FFCC56 !important;
+}
+/* 超时 */
+.chaoshi-ident{
+    background: #FB0167;
+    border-color: #FFCC56 !important;
+}
+/* 未开始 */
+.notstarted-ident{
+    background: #7F94C3;
+    border-color: #AABADF !important;
+}
+/* 环节日历安排 */
+.subset-calender{
+    border-bottom: 1px solid #7F94C3;
+}
+.subset-item{
+    position: relative;
+}
+.subset-item-ul{
+    position: relative;
+    float: left;
+    width:100%;
+}
+
+/* 流程项 */
+.process-ul{
+    border-bottom: 5px solid #EFF3F9;
+    position: relative;
+    white-space: nowrap;
+    overflow: auto;
+    overflow-y: hidden;
+    font-size: 0;
+    margin-bottom: 15px;
+}
+.process-ul>li{
+    width: 432px;
+    margin-right: 15px;
+    border: 1px solid #EEF0F6;
+    display: inline-block;
+    background: #fff;
+    height: calc(100% - 15px);
+    overflow: hidden;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.process-ul>li:last-of-type{
+	margin-right: 0px;
+}
+/* 环节介绍 */
+.link-introducte{
+    background: #EFF3F9;
+    padding: 14px 11px 19px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(213, 222, 239, 0.5);
+    margin: 12px;
+    cursor: pointer;
+}
+.link-introducte:hover{
+    background: #dfe7f2;
+}
+.link-introducte:hover .link-name span{
+    color: #1F65EB;
+}
+.link-name button{
+    font-size: 14px;
+    padding: 4px 10px;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    margin-right: 5px;
+}
+.link-introducte>p{
+    font-size: 13px;
+    color: #99A2B6;
+    margin-top: 12px;
+}
+.link-introducte>p span{
+    margin-left: -5px;
+    color: #5C6989;
+    margin-right: 25px;
+}
+.link-introducte>p span:last-child{
+    margin-right: 0px;
+}
+.link-introducte>p>label i.iconfont{
+    font-size: 14px;
+    margin-right: 3px;
+}
+.link-introducte>p>label i.iconfont.icon-riqi{
+    font-size: 12px;
+    display: inline-block;
+}
+.link-items{
+    /* height: calc(100% - 150px); */
+    overflow: auto;
+    padding: 0 12px;
+    height: 250px;
+}
+/* 展开后效果 */
+.process-ul>li.clickActive{
+    border-color: #fb0167;
+    border-width: 2px;
+}
+.process-ul>li.active .spread-out-btn{
+    position: relative;
+}
+.process-ul>li.active .spread-out-btn i.iconfont{
+    transform: rotate(0deg);
+    vertical-align: unset;
+}
+/* 公共样式 */
+/* 无表单内容情况 */
+.purchase-notData{
+    text-align: center;
+    color: #8792A6;
+    padding: 15px 0px;
+    height: 132px;
+    position: relative;
+    z-index: 2;
+}
+.link-item .purchase-notData{
+	margin-top: 36px;
+}
+.notData-icon{
+    background: url("../../images/other/notData.png") no-repeat center;
+    height: 80px;
+    width: 100%;
+    display: block;
+    margin-bottom: 13px;
+}
+.link-item:not(:last-of-type){
+    border-bottom: 1px solid rgba(213, 222, 239, 0.5);
+}
+.link-item P{
+    line-height: 16px;
+    margin-top: 5px;
+}
+.link-item P>i:not(.iconfont){
+    margin-left: -7px;
+}
+.link-item P label,.handover-timer P{
+    color: #7F94C3;
+    font-size: 12px;
+} 
+.link-item P label i.iconfont{
+    font-size: 12px;
+    margin-right: 3px;
+}
+.link-item P>span{
+    margin-right: 18px;
+}
+/* 环节项 */
+.link-item-title{
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(213, 222, 239, 0.5);
+    position: relative;
+}
+.link-item-title::after{
+    content: "";
+    width: 20px;
+    border-bottom: 2px solid #FFA200;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.link-item-list{
+    font-size: 12px;
+    color: #5C6989;
+    padding: 10px 0px;
+    border-bottom: 1px dashed #7F94C3;
+}
+.link-item .link-item-list:nth-last-of-type(1){
+    border-bottom: none;
+    margin-bottom: 8px;
+}
+.link-item-name{
+    line-height: 19px;
+    font-size: 14px;
+    color: #000000;
+}
+/* 文件下载按钮 */
+.link-item-name .upload-btn{
+    color: #7F94C3;
+    font-size: 12px;
+    transform: scale(0.9);
+}
+
+/* 供应商模块 */
+.supplier-module{
+    margin: 15px 0px;
+}
+.supplier-module-top{
+    padding: 10px 15px;
+    background: #FAFCFD;
+}
+.supplier-module-top>span{
+    color: #5C6989;
+}
+.supplier-module-top>span.fr{
+    color: #1F65EB;
+    font-size: 16px;
+}
+.supplier-module-bottom{
+    background: #F4F6FB;
+    padding: 15px;
+}
+.payment-amount{
+    color: #FFA200;
+    font-size: 22px;
+    margin: 0 6px 0 -6px;
+}
+.supplier-module-bottom>i{
+    color: #5C6989;
+    font-size: 14px;
+}
+/* 单据交接时间轴 */
+.handover-timer{
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+.handover-timer li{
+    border-left: 1px dashed #D5DEEF;
+    position: relative;
+    padding-left: 10px;
+}
+.time-circle{
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    border-radius: 100%;
+    border: 1px solid #7F94C3;
+    position: absolute;
+    left: -4px;
+    background: #ffffff;
+    top: 4px;
+}
+.handover-item{
+    border: 3px solid rgba(247, 249, 252, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0 0;
+}
+.handover-timer li:not(:last-child){
+    padding-bottom: 10px;
+}
+.handover-timer li p{
+    margin: 0px;
+}
+.handover-logo{
+    background: #7F94C3;
+    border-radius: 20px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    color: #ffffff;
+    text-align: center;
+}
+.handover-logo i.iconfont{
+    font-size: 34px;
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: -2px;
+}
+.handover-name{
+    font-size: 13px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+}
+.handover-switch{
+    font-size: 12px;
+    color: #5C6989;
+    line-height: 22px;
+}
+.handover-switch i.iconfont{
+    margin: 0 10px;
+    color: #7F94C3;
+    font-size: 12px;
+    opacity: 0.5;
+}
+.spread-out-btn{
+    height: 40px;
+    width: calc(100% - 24px);
+    background: #EFF3F9;
+    color: #5C6989;
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    margin-bottom: 12px;
+    z-index: 2;
+}
+.spread-out-btn i.iconfont{
+    color: #7F94C3;
+    font-size: 14px;
+    margin-left: 5px;
+    display: inline-block;
+    transform: rotate(180deg);
+    vertical-align: bottom;
+    transition: transform 0.3s;
+}
+
+/* 流程移动按钮 */
+.subset-tab-btn{
+    width: 20px;
+    height: 40px;
+    background-color: rgba(0, 15, 45, 0.7);
+    border-radius: 0px 100px 100px 0;
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+.subset-item-ul:hover .subset-tab-btn,.transfer-contain:hover .subset-tab-btn,.coordinate-contain:hover .subset-tab-btn{
+   opacity: 1;
+}
+.process-ul.hide+.subset-tab-btn{
+    opacity: 0 !important;
+}
+.subset-tab-btn.unactive{
+    cursor: not-allowed;
+    background: #a6abb6;
+}
+.subset-next-btn{
+    left: auto;
+    right: -15px;
+    transform: rotate(-180deg)
+}
+.subset-tab-btn i.iconfont{
+    font-size: 12px;
+    display: inline-block;
+    transform: rotate(90deg);
+    margin-left: -5px;
+}
+/* .approval-form-contain,.layui-tab-contain{
+    margin-bottom: 70px;
+} */
+/* 问题信息分组  */
+.group-title{
+	margin-bottom: 15px;
+    margin-top: 15px;
+    border-left: 3px solid #374FFF;
+    padding-left: 10px;
+    line-height: 20px;
+}
+.group-title:first-child{
+	margin-top:0px;
+}
+/* 底部按钮  */
+.approval-bottom-group{
+    padding: 20px 8px;
+    margin: 0 4px;
+    box-shadow: 0px -2px 5px #f3f3f3;
+    width: calc(100% - 8px);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    text-align: center;
+}
+.approval-bottom-group .basic-btn{
+	height: 30px;
+    line-height: 28px;
+    padding: 0 20px;
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+
+/* 问题详情页面  by lsx 2020-9-11 */
+.contain-h{
+    height: calc(100% - 90px);
+}
+.contain-h .layui-tab{
+	height: 100%;
+}
+.contain-h .layui-tab-content{
+	height: calc(100% - 60px);
+    overflow: auto;
+}
+.layui-table-style.layui-table{
+    border-top: 2px solid #59A0FF;
+}
+.layui-table-style.layui-table th{
+	min-height: 28px;
+    line-height: 28px;
+    padding: 3px 0;
+    background: #FCFDFE;
+    border-right-color: #F0F3F9;
+    border-bottom-color: #7F94C3;
+    border-top: 0;
+    border-left: 0;
+    text-align: center;
+    font-size: 13px;
+    color: #000;
+}
+.layui-table-style.layui-table td {
+	min-height: 28px;
+    line-height: 28px;
+    padding: 1px 5px;
+    text-align: center;
+    border-bottom-color: #D5DEEF;
+    border-right-color: #F0F3F9;
+    border-left: 0;
+    color: #5C6989;
+    font-size: 13px;
+}
+.layui-table-style.layui-table th:last-child,.layui-table-style.layui-table td:last-child {
+	border-right: 0;
+}
+
+/* 分辨率适配 */
+@media screen and (max-width:1600px){
+    /* 项目描述 */
+    .project-name>span {
+        font-size: 16px;
+    }
+    .project-name .project-grade {
+        width: 18px;
+        height: 18px;
+        line-height: 16px;
+        margin-left: 2px;
+    }
+    .project-contact {
+        font-size: 13px;
+        margin: 8px 0;
+    }
+    .project-form{
+        font-size: 13px;
+    }
+    .project-desc {
+        padding: 15px 0 15px 15px;
+    }
+    .pd-right {
+        height: 55px;
+        margin-top: 8px;
+    }
+    .project-form a {
+        margin-right: 22px;
+    }
+    .project-operate {
+        padding: 14px 22px;
+    }
+    .project-operate button {
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
+    }
+    .project-operate button i.iconfont {
+        font-size: 12px;
+        vertical-align: 1px;
+    }
+    .project-operate button i.iconfont.icon-delete, .project-operate button i.iconfont.icon-pinglun-copy {
+        font-size: 13px;
+        vertical-align: 0px;
+    }
+    .project-rate {
+        padding: 0 20px 0 20px;
+    }
+    .project-rate .layui-rate {
+        padding: 5px 5px 8px 0;
+        font-size: 0;
+    }
+    .layui-rate li i.layui-icon {
+        font-size: 16px;
+    }
+    .layui-rate+.layui-inline {
+        font-size: 13px;
+    }
+    .rate-num {
+        font-size: 16px;
+    }
+
+    /* tab */
+    .btab-title li {
+        font-size: 12px;
+        line-height: 40px;
+    }
+    .btab-title li a {
+        padding: 0 15px;
+    }
+    .btab-title li.layui-this .title-name::after {
+        bottom: -12px;
+    }
+    .btabc-title {
+        padding: 12px 0 12px 0;
+        font-size: 13px;
+    }
+    .subset-text {
+        padding: 12px 0;
+        font-size: 13px;
+    }
+
+    /* 环节流程 */
+    .process-ul {
+        margin-bottom: 12px;
+    }
+    .process-ul>li {
+        width: 370px;
+        margin-right: 12px;
+        /* height: 505px; */
+    }
+    .link-name button {
+        font-size: 12px;
+        padding: 3px 10px;
+        margin-right: 3px;
+    }
+    .link-introducte {
+        padding: 12px;
+        font-size: 14px;
+        margin: 10px 10px 5px;
+    }
+    .link-item-title,.link-item-name {
+        font-size: 13px;
+    }
+    .link-introducte>p {
+        font-size: 12px;
+    }
+    .link-introducte>p span {
+        margin-right: 10px;
+    }
+    .link-introducte>p>label i.iconfont {
+        font-size: 12px;
+    }
+    .link-introducte>p>label i.iconfont.icon-riqi {
+        transform: scale(0.9);
+    }
+    .link-item-list {
+        padding: 8px 0px;
+    }
+    /* 单据交接 */
+    .handover-item {
+        padding: 8px;
+        margin: 8px 0 0;
+    }
+    .handover-timer li:not(:last-child) {
+        padding-bottom: 8px;
+    }
+    .handover-logo {
+        width: 45px;
+        height: 45px;
+        border-radius: 17px;
+    }
+    .handover-logo i.iconfont {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-left: -1px;
+    }
+    /* 付款金额 */
+    .supplier-module {
+        margin: 12px 0px;
+        font-size: 13px;
+    }
+    .supplier-module-top>span.fr {
+        font-size: 15px;
+    }
+    .payment-amount {
+        font-size: 20px;
+    }
+    /* 展开收起按钮 */
+    .spread-out-btn {
+        height: 36px;
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+    .spread-out-btn i.iconfont {
+        font-size: 12px;
+    }
+}
+
+
+/* 在1366*768下的适配 */
+@media screen and (max-width:1366px) and (max-height:600px){
+    /* 项目描述 */
+    .project-desc {
+        padding: 12px;
+    }
+    .project-name>span {
+        font-size: 15px;
+    }
+    .project-name .project-grade {
+        width: 16px;
+        height: 16px;
+        line-height: 14px;
+    }
+    .project-contact {
+        font-size: 12px;
+        margin: 6px 0;
+    }
+    .project-contact span .lane {
+        margin: 0 6px;
+    }
+    .project-form a i.iconfont {
+        font-size: 15px;
+    }
+    .project-time i.iconfont {
+        font-size: 12px;
+        margin-right: 4px;
+        vertical-align: 1px;
+    }
+    .project-form {
+        font-size: 12px;
+        line-height: 54px;
+    }
+    .project-form a {
+        margin-right: 18px;
+    }    
+    .pd-right {
+        height: 48px;
+    }
+    .project-operate {
+        padding: 12px;
+    }
+    .project-operate button {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+    /* 评分 */
+    .project-rate .layui-rate {
+        padding: 5px 5px 5px 0;
+    }
+    .layui-rate+.layui-inline {
+        font-size: 12px;
+    }
+    .rate-num {
+        font-size: 15px;
+    }
+
+    /* 环节概览 */
+    .subset-operate span {
+        margin-right: 18px;
+    }
+    .circle-ident {
+        width: 9px;
+        height: 9px;
+    }
+
+    .subset-text {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    /* 环节流程 */
+    .link-introducte {
+        font-size: 13px;
+        margin: 8px 8px 5px;
+    }
+    .link-introducte>p {
+        margin-top: 10px;
+    }
+    .link-item-title, .link-item-name {
+        font-size: 12px;
+    }
+    .link-item-title {
+        padding: 10px 0;
+    }
+    .link-item P {
+        margin-top: 3px;
+    }
+    .payment-amount {
+        font-size: 17px;
+    }
+    /* 单据交接 */
+    .handover-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        margin-right: 8px;
+    }
+    .handover-logo i.iconfont {
+        font-size: 26px;
+        margin-top: 8px;
+    }
+    .handover-item {
+        margin: 5px 0 0;
+    }
+    .handover-timer li:not(:last-child) {
+        padding-bottom: 5px;
+    }
+    /* 展开收起按钮 */
+    .spread-out-btn {
+        height: 32px;
+        margin-bottom: 8px;
+        font-size: 12px;
+        left: 8px;
+        width: calc(100% - 16px);
+    }
+    
+    /* 问题详情 --生命周期表格 */
+    .ordinary-table tbody td,.ordinary-table thead th{
+		font-size: 12px;
+    }
+}

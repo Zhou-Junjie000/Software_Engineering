@@ -1,0 +1,47 @@
+14:49:25.163 [http-nio-8081-exec-30] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+14:49:58.652 [http-nio-8081-exec-29] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+14:50:45.054 [http-nio-8081-exec-2] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+14:51:28.593 [http-nio-8081-exec-1] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+14:58:01.506 [http-nio-8081-exec-3] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+15:01:38.641 [http-nio-8081-exec-1] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+15:02:25.153 [http-nio-8081-exec-3] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+15:02:29.157 [http-nio-8081-exec-4] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+15:12:37.697 [http-nio-8081-exec-1] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+15:13:06.797 [http-nio-8081-exec-3] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+15:13:14.184 [http-nio-8081-exec-4] ERROR c.xlf.config.GlobalExceptionHandler - 异常
+16:24:02.945 [restartedMain] ERROR o.a.catalina.core.StandardService - Failed to start connector [Connector[HTTP/1.1-8081]]
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8081]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:256)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:198)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:300)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:553)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at com.xlf.MyApplication.main(MyApplication.java:11)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1020)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 18 common frames omitted
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1151)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:591)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1018)
+	... 19 common frames omitted

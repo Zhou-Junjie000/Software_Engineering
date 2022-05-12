@@ -1,0 +1,112 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /gymnasium
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+
+web:
+  site:
+    domain: http://localhost:${server.port}${server.servlet.context-path}
+    name: web
+  # 文件存储设置
+  file_upload:
+    # 文件存储方式 local本地存储；qiniu 七牛存储
+    type: local
+    # 本地存储
+    local:
+      prefix: web
+      path: C:/web/upload/
+  # shrio配置
+  shiro:
+    # 登录的 url
+    loginUrl: /login
+    # 登录成功后跳转的 url
+    successUrl: /index
+    # 未授权 url
+    unauthorizedUrl: /unauthorized
+    # session过期时间
+    sessionTimeout: 360000
+    # 忽略放行的URL
+    ignoredUrls:
+      - /login
+      - /loginApp
+      - /i18n
+      - /error
+      - /404
+      - /500
+      - /assets/**
+      - /modules/**
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://180.76.154.60:3306/gymnasium?useUnicode=true&amp&characterEncoding=utf-8&&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 1qazXSW@
+    # Druid连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 初始化
+    initialSize: 3
+    # 最大
+    maxActive: 20
+    # 最小
+    minIdle: 3
+    # 最大连接等待超时时间
+    maxWait: 60000
+    # 打开PSCache,并且指定每个连接PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 配置间隔多久才进行一次检测,检测需要关闭的空闲连接,单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间,单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    # 配置监控统计拦截的filters,去掉后监控界面sql将无法统计,'wall'用于防火墙
+    filters: stat, wall, log4j
+  http:
+    # 过滤字符编码
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    #上传文件大小限制
+  #    multipart:
+  #      maxFileSize: 10Mb
+  #      maxRequestSize: 100Mb
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 10MB
+
+## Mybatis 配置
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.xlf.modules.*.entity
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰命名规则
+    use-generated-keys: false  # 使用jdbc的getGeneratedKeys 获取数据库自增主键
+    use-column-label: true # 使用列名替换别名 默认为true
+
+# 通用mapper 切换数据库时，修改成对应数据库
+mapper:
+  #mappers 多个接口时逗号隔开
+  identity: ORACLE   # 取主键的方式 
+  before: true      # 主键递增
+  not-empty: true   # 按主键插入或更新时，是否判断字符串 != ''
+  style: camelhumpandlowercase  # 实体类与表中字段的映射方式：驼峰转带下划线的小写格式
+  wrap-keyword: '{0}'   # 自动配置关键字，配置后不需要使用 @Column 指定别名
+  safe-delete: true   # 删除时必须设置查询条件
+  safe-update: true   # 更新时必须设置查询条件
+  use-java-type: true   # 是否映射Java基本数据类型
+  mappers: com.xlf.common.base.mybatis.BaseMapper #通用mapper的所在接口名称 不只是包名
+
+# 日志
+logging:
+  level:
+    com.xlf.*: debug

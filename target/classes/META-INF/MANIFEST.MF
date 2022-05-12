@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: web
+Implementation-Version: V1.0
+Implementation-Vendor-Id: com.xlf
+Build-Jdk: 1.7.0_51
+Built-By: xlifeng
+Created-By: Maven Integration for Eclipse
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/web
+

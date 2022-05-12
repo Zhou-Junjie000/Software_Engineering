@@ -1,0 +1,85 @@
+/**
+ * 
+ */
+package com.xlf.modules.dataMaintenance.entity;
+
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.format.DateTimeFormat;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
+import com.alibaba.excel.annotation.write.style.HeadRowHeight;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+
+/**
+ * @Description:数据支撑导出Dto
+ * @author: songpeng 
+ * @date: date{time} （日期） 
+*/
+@Data
+@EqualsAndHashCode(callSuper=false)
+@HeadRowHeight(31)
+//忽略不加@ExcelProperty的字段的读写 等同于字段注解@ExcelIgnore
+@ExcelIgnoreUnannotated
+public class SupportExcelExportDtoTwo implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private Integer rowIndex; //Excel 行号
+	
+    @ExcelProperty(value = {"子系统"}, index = 0)
+    @ColumnWidth(20)
+    private String modulename;
+    
+    @ExcelProperty(value = {"提出人"}, index = 1)
+    @ColumnWidth(11)
+    private String proposer;
+   
+    @ExcelProperty(value = {"提出日期"}, index = 2, format = "yyyy/MM/dd")
+    @DateTimeFormat(value="yyyy/MM/dd")
+    @ColumnWidth(11)
+    private String proposedate;
+    
+    @ExcelProperty(value = {"问题类型"}, index = 3)
+    @ColumnWidth(11)
+    private String typename;
+
+    @ExcelProperty(value = {"问题概述"}, index = 4)
+    @ColumnWidth(51)
+    private String info;
+
+   
+    @ExcelProperty(value = {"数量"}, index = 5)
+    @ColumnWidth(11)
+    private Integer count;
+
+    
+    /*@ExcelProperty(value = {"工作量(小时)"}, index = 6)
+    @ColumnWidth(14)
+    private Double prework;*/
+  
+    @ExcelProperty(value = {"反馈用户工作量(小时)"}, index = 6)
+    @ColumnWidth(14)
+    private Double prework;
+
+    @ExcelProperty(value = {"实际投入工作量(小时)"}, index = 7)
+    @ColumnWidth(14)
+    private Double realwork;
+
+ 
+    @ExcelProperty(value = {"解决人"}, index = 8)
+    @ColumnWidth(8)
+    private String resolver;
+
+    
+    @ExcelProperty(value = {"解决日期"}, index = 9)
+    @DateTimeFormat(value="yyyy/MM/dd")
+    @ColumnWidth(11)
+    private String resolvedate;
+
+    @ExcelProperty(value = {"备注"}, index = 10)
+    @ColumnWidth(52)
+    private String remark;
+
+}

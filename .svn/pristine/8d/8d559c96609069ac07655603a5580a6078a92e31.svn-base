@@ -1,0 +1,108 @@
+layui.use(['form','layer','laydate','myTable','laytpl','formSelects','upload','echarts'],function(){
+    var form = layui.form,
+        layer = parent.layer === undefined ? layui.layer : topWin(window).layer,
+        $ = layui.jquery,
+        laydate = layui.laydate,
+        laytpl = layui.laytpl,
+        myTable = layui.myTable,
+        upload = layui.upload,
+        echarts = layui.echarts;
+    
+    var tableColumns = [
+			{field: 'id', title: '主键',hide:true},
+			{field: 'feetime', title: '日期', align:"center",sort:true},
+			{field: 'fee', title: '收入总金额', align:"center", sort:true},
+			{field: 'num', title: '预约总次数', align:"center", sort:true}
+		];
+    
+    
+    var defaultWhere = {
+    		type:PAGE_CONSTANT.type,
+    		coachid:PAGE_CONSTANT.coachid,
+    		courseid:PAGE_CONSTANT.courseid,
+    		cardid:PAGE_CONSTANT.cardid
+        } ;
+    var tableIns = myTable.render({
+    		url: `${SYS_CFG.ctxPath}/${Entity.tag}/page2`,
+    		cols: [tableColumns], 
+    		where: defaultWhere,
+    		sort:true
+    	});
+    
+    lay('.date-input').each(function(){
+        laydate.render({
+        	type:'date',
+            elem: this,
+            range: '~',
+            trigger: 'click'
+        });
+    });
+    
+    $(".add_btn").click(function(){
+    	myTable.openViewAdd();
+    })
+   
+    //列表操作
+    myTable.on('tool(list)', function(obj){
+        var layEvent = obj.event,
+            data = obj.data;
+        if(layEvent === 'edit'){ //编辑
+        	myTable.openMod(data.id);
+        } else if(layEvent === 'del'){ //删除
+        	var delIds = [obj.data.id];
+            myTable.delByIds(delIds);
+        }
+     })
+     
+     $('body').css('overflow-y','auto')
+     $('body #list+.layui-form').after('<div class="sheet-title e-sheet-title">'+
+ 											'<span>收入图表</span>'+
+ 									   '</div>'+
+    		 						   '<div class="income-echarts" id="echartDemo"></div>')
+     $('body #echartDemo').width($('body').width())
+     $('body #echartDemo').height('500px')
+     //图表初始化
+     echartInit()
+     function echartInit(){
+    	var chart = echarts.init(document.getElementById('echartDemo'));
+    	var option = {
+    			tooltip: {
+    			    trigger: 'axis'
+    			},
+    			xAxis: {
+				    type: 'category',
+				    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']  //x轴数据
+				},
+				yAxis: {
+					type: 'value',
+					name: '元',
+					nameTextStyle: {
+						color: '#1F65EB',
+						fontSize: 18
+					}
+				},
+				dataZoom: [
+		           {
+		               type: 'inside',
+		               start: 0,
+		               end: 40
+		           },
+		           {
+		               start: 0,
+		               end: 40
+		           }
+		        ],
+				series: [
+				    {
+				    	data: [150, 230, 224, 218, 135, 147, 260],  //y轴数据
+				        type: 'line',
+				        itemStyle: {
+				        	color: '#1F65EB'
+				        }
+				    }
+				]
+		};
+    	chart.setOption(option);
+    }
+     
+})

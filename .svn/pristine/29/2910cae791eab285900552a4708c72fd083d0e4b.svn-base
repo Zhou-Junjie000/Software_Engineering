@@ -1,0 +1,9 @@
+@/* 页脚 */
+<script type="text/javascript">
+    var SYS_CFG = {
+   		ctxPath: "${ctxPath}",
+   		PTPath:"http://218.241.81.216/gspt/ptlogin.asp",//Pt库
+   		//zentaoPath:"http://113.209.133.197:9102"//测试
+   		zentaoPath:"http://113.209.133.197:8080"//生产
+    };
+</script>

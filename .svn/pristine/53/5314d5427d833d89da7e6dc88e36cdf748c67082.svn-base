@@ -1,0 +1,39 @@
+package com.xlf.common.easyexcel;
+
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.xlf.modules.dataMaintenance.entity.SupportEntniy;
+
+/**
+ * 
+ * @Description:excel数据导入结果
+ * @author: songpeng 
+ * @date: date{time} （日期）
+ */
+@Data
+public class ExcelCheckResult<T> {
+    private List<T> successDtos;
+    
+    private List<SupportEntniy> insertList;
+
+    private List<ExcelCheckErrDto<T>> errDtos;
+
+    public ExcelCheckResult(List<T> successDtos, List<ExcelCheckErrDto<T>> errDtos,List<SupportEntniy> insertList){
+        this.successDtos =successDtos;
+        this.errDtos = errDtos;
+        this.insertList = insertList;
+    }
+    
+    public ExcelCheckResult(List<T> successDtos, List<ExcelCheckErrDto<T>> errDtos){
+        this.successDtos =successDtos;
+        this.errDtos = errDtos;
+    }
+
+    public ExcelCheckResult(List<ExcelCheckErrDto<T>> errDtos){
+        this.successDtos =new ArrayList<>();
+        this.errDtos = errDtos;
+    }
+}

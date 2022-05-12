@@ -1,0 +1,123 @@
+layui.use(['form','layer','laydate','myTable','laytpl','formSelects','upload'],function(){
+    var form = layui.form,
+    	layer = parent.layer === undefined ? layui.layer : topWin(window).layer,
+        $ = layui.jquery,
+        laydate = layui.laydate,
+        laytpl = layui.laytpl,
+        myTable = layui.myTable,
+        upload = layui.upload;
+        
+   if(PAGE_CONSTANT.roleId=='2020011301'){
+	   $('#toolbarView').empty();
+   }
+   
+    var tableColumns =  [
+	            {type: "checkbox", fixed:"left", width:50},
+	            {field: 'id', title: '主键',hide:true},
+	            {field: 'pt', title: '需求单号', align:"center",width:'10%' ,sort: true,templet:function(d){
+	            	if(!d.pt)
+	            		return '';
+                    return d.pt;
+                }},
+	            {field: 'createtime', title: '上传时间',width:'10%' ,templet:function(d){
+	            	if(!d.createtime)
+	            		return '';
+	            	 return new Date(d.createtime).pattern("yyyy-MM-dd");
+                }},
+                {field: 'uploader', title: '上传人',width:'10%' , sort: true,templet:function(d){
+	            	if(!d.uploader)
+	            		return '';
+	            	 return d.uploader;
+                }},
+                {field: 'filename', title: '文件名',width:'32%' , templet:function(d){
+	            	if(!d.filename)
+	            		return '';
+	            	 return d.filename;
+                }},
+                
+                {field: 'type', title: '附件类型',width:'10%' , templet:function(d){
+	            	if(d.type=='1'){
+	            		return '测试报告';
+	            	}else if(d.type=='0'){
+	            		return '脚本';
+	            	}else{
+	            		return '未知';
+	            	}
+                }},
+                {field: 'filetype', title: '文件类型',width:'15%' , sort: true,templet:function(d){
+	            	if(!d.filetype)
+	            		return '';
+	            	 return d.filetype;
+                }},
+                {title: '操作', width:'10%' ,templet:function(d) {
+    				var html = '<div class="operate-btns">';
+    				html += '<a class="layui-btn layui-btn-xs layui-btn-edit2" lay-event="download" title="下载"><i class="iconfont icon-xiazai"></i><div class="tip-title"><span>下载</span></div></a>';
+    				html += ' </div>';
+    				return html;
+    			},fixed:"right",align:"center"}
+	        ];
+    
+    var defaultWhere = {
+    	search: PAGE_CONSTANT.relId 
+    };
+    /** 列表渲染 */
+    var listHeight;
+    //判断是否是问题详情里的附件列表赋予不同的高度值
+    if($($(window.parent.document).find('iframe')[2]).attr('id') == "attachmentIframe"){
+    	listHeight = $(window.parent.document).find("#attachmentIframe").height();
+    }else{
+    	listHeight = $(window.parent.document).find("iframe").closest(".layui-show").height();
+    }
+    var tableIns = myTable.render({
+    	url:`${SYS_CFG.ctxPath}/attachment/getByRelId?relId=`+PAGE_CONSTANT.relId+`&relTable=`+PAGE_CONSTANT.relTable,
+    	cols: [tableColumns],
+    	where:defaultWhere,
+      	height: listHeight,
+    	toolbar: false, //表格工具栏隐藏
+    	done: function(){
+    		//表格工具栏隐藏后删除查询搜索区域多余空白
+    		if(!PAGE_CONSTANT.canDelete){
+    			$(".project-advanced-search").hide();
+    		}
+    	}
+    	});
+    
+    $(".add_btn").click(function(){
+    	myTable.openViewAdd();
+    })
+        //批量删除
+    $(".delAll_btn").click(function(){
+        var checkStatus = myTable.getSelectAll(),
+            data = checkStatus.data,
+            delIds = [];
+        if(data.length > 0) {
+            for (var i in data) {
+            	delIds.push(data[i].id);
+            }
+            myTable.delByIds(delIds);
+        }else{
+            layer.msg("请选择需要删除的对象");
+        }
+    })
+    
+
+    //列表操作
+    myTable.on('tool(list)', function(obj){
+        var layEvent = obj.event,
+            data = obj.data;
+        if(layEvent === 'edit'){ //编辑
+        	myTable.openMod(data.id);
+        }
+        else if(layEvent === 'download'){ //下载
+        	 postUrl=`${SYS_CFG.ctxPath}/attachment/existFile?path=`+data.filepath+`/`+data.filename
+        	 $.get(postUrl, function(res){
+            	 if(res.code === 1){
+            		 window.location=`${SYS_CFG.ctxPath}/attachment/downloadFile?path=`+data.filepath+`&filename=`+data.filename;
+            	 }
+            	 else{
+            		 layer.msg(res.message);
+            	 }
+             });
+        }
+    });
+})

@@ -1,0 +1,21 @@
+package com.xlf.modules.fee;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Table(name = "t_fee")
+public class Fee {
+	@Id
+	private Integer id;
+	private String type;//缴费类型
+	private String courseid;
+	private String coachid;
+	private String cardid;
+	private String userid;
+	private Integer num;
+	private String fee;
+	private String feetime;
+}

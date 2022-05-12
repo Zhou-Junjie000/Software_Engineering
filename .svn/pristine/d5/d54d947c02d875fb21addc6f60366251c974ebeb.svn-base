@@ -1,0 +1,109 @@
+/**
+ * 
+ */
+package com.xlf.modules.dataMaintenance;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataValidation;
+import org.apache.poi.ss.usermodel.DataValidationConstraint;
+import org.apache.poi.ss.usermodel.DataValidationHelper;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddressList;
+import org.apache.poi.xssf.usermodel.XSSFDataValidation;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.alibaba.excel.write.handler.SheetWriteHandler;
+import com.alibaba.excel.write.metadata.holder.WriteSheetHolder;
+import com.alibaba.excel.write.metadata.holder.WriteWorkbookHolder;
+import com.xlf.modules.sys.entity.DictData;
+import com.xlf.modules.sys.service.DictDataService;
+
+public class SpinnerWriteHandler implements SheetWriteHandler {
+	
+	private DictDataService dictDataService;
+	
+	
+    /**
+	 * 
+	 */
+	public SpinnerWriteHandler(DictDataService dictDataService) {
+		super();
+		this.dictDataService = dictDataService;
+	}
+
+	@Override
+    public void beforeSheetCreate(WriteWorkbookHolder writeWorkbookHolder, WriteSheetHolder writeSheetHolder) {
+ 
+    }
+ 
+    @Override
+    public void afterSheetCreate(WriteWorkbookHolder writeWorkbookHolder, WriteSheetHolder writeSheetHolder) {
+    	//子系统
+    	List<DictData> supportModeList = dictDataService.listByType("supportModel");
+    	
+    	//问题类型
+    	List<DictData> supportTypeList = dictDataService.listByType("supportType");
+        Map<Integer,String []> mapDropDown = new HashMap<>();
+        
+        if(supportModeList != null && !supportModeList.isEmpty()){
+        	//字典项过多
+        	String [] supportModels = (supportModeList.stream().map(DictData::getValue).collect(Collectors.toList())).stream().toArray(String[]::new);
+        	Workbook wb = writeWorkbookHolder.getWorkbook();
+        	Sheet hiddenRiskSheet= wb.createSheet("字典");
+            createRiskHiddenSheet(hiddenRiskSheet, supportModels);
+            hiddenRiskSheet.protectSheet("password");
+            wb.setSheetHidden(wb.getSheetIndex("字典"), true); 
+            DataValidationHelper validationHelper = writeSheetHolder.getSheet().getDataValidationHelper();
+            CellRangeAddressList addressList = new CellRangeAddressList(0, 1000, 0, 0);
+            DataValidationConstraint constraint = validationHelper.createFormulaListConstraint("字典!$A$1:$A$"+supportModels.length);
+            DataValidation  dataValidation = validationHelper.createValidation(constraint, addressList);
+            dataValidation.setSuppressDropDownArrow(true);
+            writeSheetHolder.getSheet().addValidationData(dataValidation); 
+        }
+        
+        
+
+        if(supportTypeList != null && !supportTypeList.isEmpty()){
+        	String [] supportTypes = (supportTypeList.stream().map(DictData::getValue).collect(Collectors.toList())).stream().toArray(String[]::new);
+        	mapDropDown.put(3, supportTypes);
+        }
+        
+        Sheet sheet = writeSheetHolder.getSheet();
+        ///开始设置下拉框
+        DataValidationHelper helper = sheet.getDataValidationHelper();//设置下拉框
+        for (Map.Entry<Integer, String[]> entry : mapDropDown.entrySet()) {
+            /***起始行、终止行、起始列、终止列**/
+            CellRangeAddressList addressList = new CellRangeAddressList(1, 1000, entry.getKey(), entry.getKey());
+            /***设置下拉框数据**/
+            DataValidationConstraint constraint = helper.createExplicitListConstraint(entry.getValue());
+            DataValidation dataValidation = helper.createValidation(constraint, addressList);
+            /***处理Excel兼容性问题**/
+            if (dataValidation instanceof XSSFDataValidation) {
+                dataValidation.setSuppressDropDownArrow(true);
+                dataValidation.setShowErrorBox(true);
+            } else {
+                dataValidation.setSuppressDropDownArrow(false);
+            }
+            sheet.addValidationData(dataValidation);
+        }
+        
+       
+    }
+    
+    public void createRiskHiddenSheet(Sheet hiddenRiskSheet, String[] risk){
+		for (int i = 0; i < risk.length; i++) {
+			Row row = hiddenRiskSheet.createRow(i);
+			Cell cell = row.createCell(0);
+			String cat = risk[i];
+			cell.setCellValue(cat);
+		}
+	}
+}

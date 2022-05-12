@@ -1,0 +1,72 @@
+/**
+ * 
+ */
+package com.xlf.common.easyexcel;
+
+import java.math.BigDecimal;
+
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataFormat;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.usermodel.Workbook;
+
+import com.alibaba.excel.event.WriteHandler;
+
+/**
+ * @Description:
+ * @author: songpeng
+ * @date: date{time} （日期）
+ */
+public class StyleExcelHandler implements WriteHandler {
+
+	@Override
+	public void sheet(int i, Sheet sheet) {
+	}
+
+	@Override
+	public void row(int i, Row row) {
+	}
+
+	@Override
+	public void cell(int i, Cell cell) {
+		// 从第二行开始设置格式，第一行是表头
+		Workbook workbook = cell.getSheet().getWorkbook();
+		CellStyle cellStyle = createStyle(workbook);
+		if (cell.getRowIndex() > 2) {
+			cell.getRow().getCell(i).setCellStyle(cellStyle);
+		}
+	}
+
+	/**
+	 * 实际中如果直接获取原单元格的样式进行修改, 最后发现是改了整行的样式, 因此这里是新建一个样* 式
+	 */
+	private CellStyle createStyle(Workbook workbook) {
+		CellStyle cellStyle = workbook.createCellStyle();
+		// 下边框
+		cellStyle.setBorderBottom(BorderStyle.THIN);
+		// 左边框
+		cellStyle.setBorderLeft(BorderStyle.THIN);
+		// 上边框
+		cellStyle.setBorderTop(BorderStyle.THIN);
+		// 右边框
+		cellStyle.setBorderRight(BorderStyle.THIN);
+		// 水平对齐方式
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		// 垂直对齐方式
+		cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
+		Font cellFont = workbook.createFont();
+		cellFont.setFontName("宋体");
+		cellFont.setFontHeightInPoints((short) 11);
+		cellFont.setBold(false);
+		cellStyle.setFont(cellFont);
+		return cellStyle;
+	}
+}

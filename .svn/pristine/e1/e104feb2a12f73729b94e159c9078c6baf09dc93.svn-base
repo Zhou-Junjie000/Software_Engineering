@@ -1,0 +1,242 @@
+/**
+ * 
+ */
+package com.xlf.modules.dataMaintenance.entity;
+
+import java.io.Serializable;
+
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.format.DateTimeFormat;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
+import com.alibaba.excel.annotation.write.style.HeadRowHeight;
+import com.xlf.common.easyexcel.ExcelPatternMsg;
+import com.xlf.common.easyexcel.SheetIgnore;
+
+
+import java.util.regex.Matcher;
+import cn.hutool.core.util.StrUtil;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * @Description:数据支撑导入Dto
+ * @author: songpeng 
+ * @date: date{time} （日期） 
+*/
+@SuppressWarnings("deprecation")
+@EqualsAndHashCode(callSuper=false)
+@HeadRowHeight(31)
+//忽略不加@ExcelProperty的字段的读写 等同于字段注解@ExcelIgnore
+@ExcelIgnoreUnannotated
+//读取时忽略这个sheet
+@SheetIgnore(value="字典")
+public class SupportExcelDto implements Serializable, Comparable<SupportExcelDto> {
+	private Integer rowIndex; //Excel 行号
+	
+    
+	@ExcelProperty(value = {"子系统"}, index = 0)
+    @NotBlank(message = "不能为空")
+    @ColumnWidth(20)
+    private String modulename;
+    
+    @ExcelProperty(value = {"提出人"}, index = 1)
+    @NotBlank(message = "不能为空")
+    @Length(max = 20)
+    @ColumnWidth(11)
+    private String proposer;
+   
+    @ExcelProperty(value = {"提出日期"}, index = 2, format = "yyyy/MM/dd")
+    @NotBlank(message = "不能为空")
+    @DateTimeFormat(value="yyyy/MM/dd")
+    @Pattern(regexp = ExcelPatternMsg.DATE1,message = ExcelPatternMsg.DATE1_MSG)
+    @ColumnWidth(11)
+    private String proposedate;
+    
+    @ExcelProperty(value = {"问题类型"}, index = 3)
+    @NotBlank(message = "不能为空")
+    @ColumnWidth(11)
+    private String typename;
+
+    @ExcelProperty(value = {"问题概述"}, index = 4)
+    @NotBlank(message = "不能为空")
+    @Length(max = 2000)
+    @ColumnWidth(51)
+    private String info;
+
+   
+    @ExcelProperty(value = {"数量"}, index = 5)
+    @NotBlank(message = "不能为空")
+    @Pattern(regexp = ExcelPatternMsg.NUMBER,message = ExcelPatternMsg.NUMBER_MSG)
+    @ColumnWidth(11)
+    private String count;
+
+  
+    @ExcelProperty(value = {"反馈用户工作量(小时)"}, index = 6)
+    @NotBlank(message = "不能为空")
+    @Pattern(regexp = ExcelPatternMsg.DECIMAL,message = ExcelPatternMsg.DECIMAL_MSG)
+    @ColumnWidth(14)
+    private String prework;
+
+    @ExcelProperty(value = {"实际投入工作量(小时)"}, index = 7)
+    @NotBlank(message = "不能为空")
+    @Pattern(regexp = ExcelPatternMsg.DECIMAL,message = ExcelPatternMsg.DECIMAL_MSG)
+    @ColumnWidth(14)
+    private String realwork;
+
+ 
+    @ExcelProperty(value = {"解决人"}, index = 8)
+    @NotBlank(message = "不能为空")
+    @ColumnWidth(8)
+    @Length(max = 20)
+    private String resolver;
+
+    
+    @ExcelProperty(value = {"解决日期"}, index = 9)
+    @NotBlank(message = "不能为空")
+    @DateTimeFormat(value="yyyy/MM/dd")
+    @Pattern(regexp = ExcelPatternMsg.DATE1,message = ExcelPatternMsg.DATE1_MSG)
+    @ColumnWidth(11)
+    private String resolvedate;
+
+    @ExcelProperty(value = {"备注"}, index = 10)
+    @ColumnWidth(52)
+    private String remark;
+    
+    public Integer getRowIndex() {
+		return rowIndex;
+	}
+	public void setRowIndex(Integer rowIndex) {
+		this.rowIndex = rowIndex;
+	}
+	public String getModulename() {
+		return modulename;
+	}
+	public void setModulename(String modulename) {
+		this.modulename = modulename;
+	}
+	public String getProposer() {
+		return proposer;
+	}
+	public void setProposer(String proposer) {
+		this.proposer = proposer;
+	}
+	public String getProposedate() {
+		return proposedate;
+	}
+	public void setProposedate(String proposedate) {
+		this.proposedate = proposedate;
+	}
+	public String getTypename() {
+		return typename;
+	}
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = replaceAll(info);
+	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
+	public String getPrework() {
+		return prework;
+	}
+	public void setPrework(String prework) {
+		this.prework = prework;
+	}
+	public String getRealwork() {
+		return realwork;
+	}
+	public void setRealwork(String realwork) {
+		this.realwork = realwork;
+	}
+	public String getResolver() {
+		return resolver;
+	}
+	public void setResolver(String resolver) {
+		this.resolver = resolver;
+	}
+	public String getResolvedate() {
+		return resolvedate;
+	}
+	public void setResolvedate(String resolvedate) {
+		this.resolvedate = resolvedate;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = replaceAll(remark);
+	}
+    private String replaceAll(String str){
+    	str = str.replaceAll("\\\\", "\\\\\\\\")
+				.replaceAll("\\?", "\\\\?")
+				.replaceAll("\\'", "\\\\'")
+				.replaceAll("\\--", "\\\\--");
+		return str;
+	}
+	@Override
+    public boolean equals(Object obj) {
+        if(obj==null){
+            return false;
+        }
+        if(this==obj){
+            return true;
+        }
+        if(obj instanceof SupportExcelDto){
+        	SupportExcelDto d =(SupportExcelDto)obj;
+            if(!StrUtil.equals(d.modulename, this.modulename)){
+                return false;
+            }else if(!StrUtil.equals(d.proposer, this.proposer)){
+                return false;
+            }else if(!StrUtil.equals(d.proposedate, this.proposedate)){
+                return false;
+            }else if(!StrUtil.equals(d.typename, this.typename)){
+                return false;
+            }else if(!StrUtil.equals(d.info, this.info)){
+                return false;
+            }else if(!StrUtil.equals(d.count, this.count)){
+                return false;
+            }else if(!StrUtil.equals(d.prework, this.prework)){
+                return false;
+            }else if(!StrUtil.equals(d.realwork, this.realwork)){
+                return false;
+            }else if(!StrUtil.equals(d.resolver, this.resolver)){
+                return false;
+            }else if(!StrUtil.equals(d.resolvedate, this.resolvedate)){
+                return false;
+            }else if(!StrUtil.equals(d.remark, this.remark)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    @Override
+	public int compareTo(SupportExcelDto h) {
+        //1排在当前的后面//-1排在当前的前面
+		int big = -1,small = 1,eq =0;
+		if(h == null||h.rowIndex  == null){
+			return big;
+		}else if(this.rowIndex  ==null){
+			return small;
+		}else if(h.rowIndex < this.rowIndex){
+			return big;
+		}
+		return eq;
+	}
+}

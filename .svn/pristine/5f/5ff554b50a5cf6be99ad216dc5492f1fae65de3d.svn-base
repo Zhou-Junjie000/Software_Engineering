@@ -1,0 +1,8 @@
+package com.xlf.modules.fee.service;
+
+import com.xlf.common.base.mybatis.MybatisEntityService;
+import com.xlf.modules.fee.Fee;
+
+public interface FeeService extends MybatisEntityService<Fee, Integer>{
+
+}

@@ -1,0 +1,123 @@
+package com.xlf.modules.dataMaintenance.entity;
+
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
+import com.alibaba.excel.annotation.write.style.HeadRowHeight;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(callSuper=false)
+@HeadRowHeight(35)
+@ExcelIgnoreUnannotated
+public class SupportStatisticalData {
+//	@ExcelProperty(value = {"分类"}, index =0)
+//	@ColumnWidth(12)
+//    private String sort;
+//
+//	@ExcelProperty(value = {"子系统名称"}, index =1)
+//	@ColumnWidth(20)
+//    private String modulename;
+//
+//    @ExcelProperty(value = {"PT（数据维护类数量）"}, index = 2)
+//    @ColumnWidth(11)
+//    private String maintaincount;
+//
+//    @ExcelProperty(value = {"PT（需求类数量）"}, index = 3)
+//    @ColumnWidth(11)
+//    private String  requircount;
+//
+//    @ExcelProperty(value = {"系统BUG"}, index = 4)
+//    @ColumnWidth(11)
+//    private String bugcount;
+//
+//    @ExcelProperty(value = {"PT数量总计"}, index =5)
+//    @ColumnWidth(11)
+//    private String totalcount;
+//    @ExcelProperty(value = {"工作量总计（小时）"}, index = 6)
+//    @ColumnWidth(11)
+//    private String dailycount;
+
+
+    @ExcelProperty(value = {"分类"}, index = 0)
+    @ColumnWidth(13)
+    private String sort;
+
+    @ExcelProperty(value = {"子系统名称"}, index = 1)
+    @ColumnWidth(20)
+    private String modulename;
+
+    @ExcelProperty(value = {"数据维护类", "数据维护"}, index = 2)
+    @ColumnWidth(10)
+    private String dataMaintenance;
+
+    @ExcelProperty(value = {"数据维护类", "数据统计"}, index = 3)
+    @ColumnWidth(10)
+    private String dataStatistics;
+
+    @ExcelProperty(value = {"数据维护类", "账号维护"}, index = 4)
+    @ColumnWidth(10)
+    private String accountMaintenance;
+
+    @ExcelProperty(value = {"咨询类", "系统操作支撑"}, index = 5)
+    @ColumnWidth(10)
+    private String systemOperationSupport;
+
+    @ExcelProperty(value = {"咨询类", "系统问题解答"}, index = 6)
+    @ColumnWidth(10)
+    private String systemProblemSolving;
+
+    @ExcelProperty(value = {"应用服务器类", "应用巡检"}, index = 7)
+    @ColumnWidth(10)
+    private String applicationPatrol;
+
+    @ExcelProperty(value = {"应用服务器类", "存储空间巡检"}, index = 8)
+    @ColumnWidth(10)
+    private String storageSpacePatrol;
+
+    @ExcelProperty(value = {"应用服务器类", "服务器性能巡检"}, index = 9)
+    @ColumnWidth(10)
+    private String serverPerformancePatrol;
+
+    @ExcelProperty(value = {"应用服务器类", "数据库巡检"}, index = 10)
+    @ColumnWidth(10)
+    private String databasePatrol;
+
+    @ExcelProperty(value = {"应用服务器类", "数据库问题处理"}, index = 11)
+    @ColumnWidth(10)
+    private String databaseProblemHandling;
+
+    @ExcelProperty(value = {"应用服务器类", "服务器问题处理"}, index = 12)
+    @ColumnWidth(10)
+    private String serverProblemHandling;
+
+    @ExcelProperty(value = {"应用服务器类", "应用问题处理"}, index = 13)
+    @ColumnWidth(10)
+    private String applicationProblemHandling;
+
+    @ExcelProperty(value = {"配合类", "接口联调"}, index = 14)
+    @ColumnWidth(10)
+    private String interfaceJointCommissioning;
+
+    @ExcelProperty(value = {"开发优化类", "数据库配置"}, index = 15)
+    @ColumnWidth(10)
+    private String dictionaryItemConfiguration;
+
+    @ExcelProperty(value = {"开发优化类", "系统功能优化"}, index = 16)
+    @ColumnWidth(10)
+    private String interfaceOptimization;
+
+    @ExcelProperty(value = {"总数"}, index = 17)
+    @ColumnWidth(11)
+    private String totalcount;
+
+    @ExcelProperty(value = {"工作量总计（小时）"}, index = 18)
+    @ColumnWidth(11)
+    private String dailycount;
+
+    @ExcelProperty(value = {"工作量总计（天）"}, index = 19)
+    @ColumnWidth(11)
+    private String dayCount;
+}

@@ -1,0 +1,315 @@
+@charset "utf-8";
+body{
+    overflow: hidden;
+}
+.login-wrapper{
+    width: 100%;
+    height: 100%;
+    background: #fff url(../../images/login/loginBg.png) no-repeat top left;
+    background-size: 100% 55%;
+    overflow: hidden;
+}
+.system-logo{
+    width: 160px;
+    height: 44px;
+    background: url(../../images/login/systemLogo.png) no-repeat center;
+    background-size: 100% 100%;
+    margin: 10% auto 45px;
+}
+.system-name{
+    margin: 0 auto 60px;
+    width: 340px;
+    height: 65px;
+    /* background: url(../../images/login/systemName.png) no-repeat center;
+    background-size: 100% 100%; */
+    font-size: 47px;
+    color: #fff;
+    text-align: center;
+}
+/* 登录方式 */
+.header-title{
+    width: 330px;
+    margin: 0 auto;
+}
+.header-title>span{
+    width: 50%;
+    text-align: center;
+    padding-bottom: 15px;
+    float: left;
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+}
+.header-title>span.active{
+    font-size: 16px;
+}
+.header-title>span.active::after{
+    content: "";
+    width: 45px;
+    border-top: 3px solid #ffa200;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login-wrapper .layui-form{
+    width: 310px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+.layui-form-contain{
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 30px rgba(10, 40, 98, 0.05);
+}
+.layui-form-contain .layui-form-item{
+    height: 56px;
+    line-height: 56px;
+    padding-right: 15px;
+    margin-bottom: 0;
+}
+.layui-form-contain .layui-form-item:not(:last-child){
+    border-bottom: 1px solid #f2f3f7;
+}
+.layui-form-contain .layui-form-item>i.iconfont{
+    float: left;
+    line-height: inherit;
+    width: 60px;
+    display: inline-block;
+    text-align: center;
+    font-size: 19px;
+    color: #bec6dc;
+}
+.layui-form-contain .layui-form-item>i.iconfont.icon-yonghu{
+    transform: scale(1.2);
+}
+.layui-form-contain .layui-form-item .layui-input{
+   height: 26px;
+   display: inline-block;
+   width: calc(100% - 180px);
+   padding: 0px;
+   border: none;
+}
+.layui-form-contain .layui-form-code .layui-input{
+    width: calc(100% - 145px);
+}
+input.layui-input:-webkit-autofill{
+        -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+}
+.layui-form-item .layui-form-checkbox[lay-skin=primary] {
+    padding-left: 25px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.code-img{
+    width: 85px;
+    float: right;
+    height: inherit;
+    cursor: pointer;
+}
+/* 记住密码 */
+.remember-password-item{
+    margin: 24px 10px 20px;
+}
+.remember-password-item .layui-form-checkbox[lay-skin=primary] {
+    padding-left: 23px;
+    min-width: 13px;
+    min-height: 13px;
+}
+.remember-password-item .layui-form-checkbox[lay-skin=primary] span ,.remember-password-item a{
+    color: #0f345f;
+    line-height: 13px;
+    font-size: 13px;
+}
+.remember-password-item a{
+    color:#1F65EB
+}
+.remember-password-item .layui-form-checkbox[lay-skin=primary] i {
+    width: 13px;
+    height: 13px;
+    line-height: 12px;
+    border: 1px solid #dbdfea;
+    border-radius: 3px;
+    overflow: hidden;
+}
+/* 登录按钮 */
+.login-item-btn{
+    width: 100%;
+    height: 36px;
+    border-radius: 8px;
+    box-shadow: 0px 6px 10px rgba(21, 226, 99, 0.28);
+    background: #15e363;
+    margin-top: 15px;
+}
+
+/* 底部背景图 */
+.bottom-cricle{
+    background: url(../../images/login/botomCircle.png) no-repeat right  bottom;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    bottom: 8%;
+    /* animation: bounceInUp 1.2s 1;
+    -webkit-animation: bounceInUp 1.2s 1; */
+    overflow: hidden;
+}
+.bottom-line{
+    background: url("../../images/login/bottomLine.png") no-repeat 48%  bottom;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    /* animation:bounceInDown 1.2s 1;
+    -webkit-animation:bounceInDown 1.2s 1; */
+}
+
+.switch-item{
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+.switch-item.active{
+    display: block;
+}
+@keyframes bounceInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(-220px);
+      -ms-transform: translateY(-220px);
+      transform: translateY(-220px);
+    }
+     10% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounceInUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(300px);
+      -ms-transform: translateY(300px);
+      transform: translateY(300px);
+    }
+     40% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+
+
+  /* 分辨率适配 */
+  @media screen and (max-width:1680px){
+    .system-logo {
+        width: 140px;
+        height: 40px;
+        margin: 9% auto 45px;
+    }
+    .system-name {
+        width: 280px;
+        height: 54px;
+        font-size: 40px;
+    }
+    .login-wrapper .layui-form {
+        width: 280px;
+    }
+    .layui-form-contain .layui-form-item {
+        height: 50px;
+        line-height: 50px;
+    }
+    .layui-form-contain .layui-form-item>i.iconfont {
+        width: 50px;
+        font-size: 17px;
+    }
+    .layui-form-contain .layui-form-item .layui-input {
+        width: calc(100% - 140px);
+    }
+    .layui-form-contain .layui-form-item .layui-input+img {
+        width: 85px;
+    }
+    /* 记住密码 */
+    .remember-password-item {
+        margin: 20px 5px 15px;
+    }
+    .remember-password-item .layui-form-checkbox[lay-skin=primary] {
+        padding-left: 20px;
+    }
+    .remember-password-item .layui-form-checkbox[lay-skin=primary] span {
+        font-size: 12px;
+    }
+    /* 登录按钮 */
+    .login-item-btn {
+        height: 34px;
+        line-height: 34px;
+    }
+
+    /* 背景 */
+    .bottom-line {
+        background: url(../../images/login/bottomLine.png) no-repeat 76% bottom;
+        bottom: -6%;
+    }
+    .bottom-cricle {
+        background-size: 94%;
+    }
+  }
+
+  @media screen and (max-width:1439px){
+    .system-logo {
+        width: 115px;
+        height: 32px;
+        margin: 8% auto 40px;
+    }
+    .system-name {
+        width: 240px;
+        height: 45px;
+        margin-bottom: 50px;
+        font-size: 34px;
+    }
+    .login-wrapper .layui-form {
+        width: 240px;
+    }
+    .layui-form-contain .layui-form-item {
+        height: 45px;
+        line-height: 45px;
+    }
+    .layui-form-contain .layui-form-item>i.iconfont {
+        width: 45px;
+        font-size: 15px;
+    }
+    .layui-form-contain .layui-form-item .layui-input {
+        width: calc(100% - 120px);
+        font-size: 12px;
+    }
+    .layui-form-contain .layui-form-item .layui-input+img {
+        width: 70px;
+    }
+    /* 记住密码 */
+    .remember-password-item {
+        margin: 15px 5px 12px;
+    }
+    /* 登录按钮 */
+    .login-item-btn {
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+    }
+    /* 背景 */
+    .bottom-line {
+        background: url(../../images/login/bottomLine.png) no-repeat 92% bottom;
+    }
+  }

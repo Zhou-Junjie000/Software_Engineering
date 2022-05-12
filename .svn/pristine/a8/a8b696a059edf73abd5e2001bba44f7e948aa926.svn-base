@@ -1,0 +1,286 @@
+package com.xlf.common;
+
+public interface Views {
+
+	/**
+	 * login
+	 */
+	String LOGIN = "login";
+
+	/**
+	 * index
+	 */
+	String INDEX = "index";
+
+	/**
+	 * HOME
+	 */
+	String HOME = "home";
+
+	
+	interface Base {
+		
+		/**
+		 * 用户列表
+		 */
+		String USER_LIST = "modules/user/list";
+		
+		/**
+		 * 用户列表
+		 */
+		String USER_ADD = "modules/user/add";
+		
+		/**
+		 * PT项目列表
+		 */
+		String PROBLEM_LIST = "modules/problem/list";
+		String PROBLEM_TXYLIST = "modules/problem/txylist";
+		
+		/**
+		 * PT超时处理页面
+		 */
+		String PROBLEM_OVERTIME = "modules/problem/overTime";
+		/**
+		 * 关闭PT页面
+		 */
+		String PROBLEM_CLOSEPT = "modules/problem/closePT";
+		/**
+		 * PT项目新增界面
+		 */
+		String PROBLEM_ADD = "modules/problem/add";
+		/**
+		 * PT项目详情bug列表
+		 */
+		String PROBLEM_BUG = "modules/problemBug/list";
+		/**
+		 * PT项目详情工作量——整合项目部工作量和开发部工作量
+		 */
+		String ALLWORK_LIST = "modules/workload/allworkList";
+		/**
+		 * PT项目详情界面
+		 */
+		String PROBLEM_DETAIL = "modules/problem/detail";
+		/**
+		 * PT项目详情界面
+		 */
+		String PROBLEM_ALTERATION = "modules/problem/alteration";
+		/**
+		 * 关联模块与工程
+		 */
+		String PROBLEM_RELATION = "modules/problem/relation";
+		/**
+		 * PT项目列表
+		 */
+		String PENDING_PROBLEM_LIST = "modules/pendingProblem/list";
+		/**
+		 * PT项目新增界面
+		 */
+		String PENDING_PROBLEM_ADD = "modules/pendingProblem/add";
+		/**
+		 * PT项目详情界面
+		 */
+		String PENDING_PROBLEM_DETAIL = "modules/pendingProblem/detail";
+		
+		/**
+		 * 填写评估信息界面
+		 */
+		String PENDING_PROBLEM_APPRAISE = "modules/pendingProblem/appraise";
+		//暂停
+		String PENDING_PROBLEM_SUSPEND = "modules/pendingProblem/suspend";
+		//进度上报
+		String PENDING_PROBLEM_PROGRESSREPORT = "modules/pendingProblem/progressReport";
+		/**
+		 * 添加备注信息界面
+		 */
+		String PENDING_PROBLEM_REMARK = "modules/pendingProblem/remark";
+		
+		String PENDING_PROBLEM_ADDRESSEE = "modules/pendingProblem/addressee";
+		/**
+		 * 转派
+		 */
+		String PENDING_PROBLEM_TRANSFER = "modules/pendingProblem/transfer";
+		
+		/**
+		 * 提交项目部填写信息界面
+		 */
+		String PENDING_PROBLEM_SUBMIT = "modules/pendingProblem/submitToProgram";
+		
+		/**
+		 * 放行记录项目列表
+		 */
+		String SUBMITRECODE_LIST = "modules/submitrecord/list";
+		/**
+		 * 放行记录项目列表
+		 */
+		String SUBMITRECODE_ADD = "modules/submitrecord/add";
+		/**
+		 * 放行记录项目列表
+		 */
+		String SUBMITRECODE_DETAIL = "modules/submitrecord/detail";
+		
+		/**
+		 * 放版任务
+		 */
+		String TASK_LIST = "modules/task/list";
+		String TASK_txyLIST = "modules/task/txylist";
+		String TASK_ADD = "modules/task/add";
+		String TASK_COMPLETE = "modules/task/complete";
+		String TASK_TXYADD = "modules/task/txyadd";
+		String TASK_DETAIL = "modules/task/taskDetail";
+		String TASK_MY_DETAIL = "modules/task/mytaskDetail";
+		String TASK_ADDPROBLEM = "modules/task/addProblem";
+		
+		String PROJECT_LIST = "modules/project/list";
+		String PROJECT_ADD = "modules/project/add";
+		String PROJECT_DETAIL = "modules/project/detail";
+		
+		String PROGRAM_LIST = "modules/program/list";
+		String PROGRAM_ADD = "modules/program/add";
+		String PROGRAM_DETAIL = "modules/program/detail";
+		
+		String NEED_LIST = "modules/need/list";
+		String NEED_ADD = "modules/need/add";
+		String NEED_DETAIL = "modules/need/detail";
+
+
+
+		
+		/**
+		 * 放行申请
+		 */
+		String APPLY_LIST = "modules/apply/list";
+		String APPLY_ADD = "modules/apply/add";
+		String APPLY_DETAIL = "modules/apply/detail";
+		String APPLY_COMPLETE = "modules/apply/complete";
+		String APPLY_MAIL = "modules/apply/mail";
+		
+		String MYAPPLY_LIST = "modules/myapply/list";
+		String PROJECTAPPLY_LIST = "modules/projectapply/list";
+		String MYAPPLY_CONFIRM = "modules/myapply/confirm";
+		String PROJECTAPPLY_CONFIRM = "modules/projectapply/confirm";
+		String APPLY_CREAETWORD="modules/myapply/createTestWord";
+		
+		String MY_TASK_LIST = "modules/mytask/list";
+		String MY_TASK_UPLODE = "modules/mytask/uplode";
+		String MY_TASK_CONFIRM = "modules/mytask/confirm";
+		String ATTACHMENT_LIST = "modules/attachment/list";
+		String ATTACHMENT_STORY_LIST = "modules/attachment/storylist";
+		/**
+		 * 合同
+		 */
+		String CONTRACT_LIST = "modules/contract/list";
+		String CONTRACT_ADD = "modules/contract/add";
+		String CONTRACT_DETAIL = "modules/contract/detail";
+		String CONTRACT_TREE_ADD = "modules/contract/treeAdd";
+		String CONTRACT_MANAGE_LIST = "modules/contractManage/list";
+		/**
+		 * 合同上传附件
+		 */
+		String CONTRACT_ADD_ATT = "modules/attchmentht/add";
+
+		/**
+		 * 合同附件列表
+		 */
+		String CONTRACT_ATT_LIST = "modules/attchmentht/list";
+		/**
+		 * 合同需求列表
+		 */
+		String CONTRACT_STORY_LIST = "modules/contract/storyList";
+		/**
+		 * 需求TAB页面
+		 */
+		String CONTRACT_ADD_STORY_TAB = "modules/contract/contractTab";
+		/**
+		 * 合同需求列表
+		 */
+		String CONTRACT_ADD_STORY_LIST = "modules/contract/addStoryList";
+		/**
+		 * 标记需求大类
+		 */
+		String CONTRACT_SIGN_STORY_TYPE = "modules/contract/storyType";
+		
+		String BUG_LIST = "modules/bug/list";
+		String STORY_LIST = "modules/story/list";
+		String MODULE_LIST = "modules/module/list";
+		String REMARK_LIST = "modules/remark/list";
+		
+
+		String MSTORY_LIST = "modules/story/mlist";
+		String MSTORY_ADD = "modules/story/madd";
+		String MSTORY_DETAIL = "modules/story/mdetail";
+		/**
+		 * 工作日志
+		 */
+		String LOGBOOK_LIST = "modules/logbook/list";
+		String LOGBOOK_ADD = "modules/logbook/add";
+		String LOGBOOK_DETAIL = "modules/logbook/detail";
+		
+		
+		String SUPPORT_LIST = "modules/dataMaintenance/list";
+		String SUPPORT_EDIT = "modules/dataMaintenance/edit";
+		
+		/**
+		 * 禅道跳转登录
+		 */
+		String ZENTAO_LOGIN = "modules/chandao/login";
+		
+		/**
+		 * 用户管理
+		 */
+		String USER_MANAGER_LIST = "modules/userManager/list";
+		String USER_MANAGER_ADD = "modules/userManager/add";
+		String USER_MANAGER_PASSWORD = "modules/userManager/password";
+		/**
+		 * 用户需求单
+		 */
+		String USER_REQUEST_LIST = "modules/userreques/list";
+		String USER_REQUEST_ADD = "modules/userreques/add";
+		String USER_REQUEST_DETAIL = "modules/userreques/detail";
+		String USER_REQUEST_MODIFY = "modules/userreques/modify";
+		
+		
+		String PLANTRACK_DEMAND_LIST = "modules/planTrack/demandList";
+		//工作量需求分摊
+		String PLANTRACK_WORK_DEMAND_LIST = "modules/planTrack/workDemandAdd";
+
+		
+		
+		
+		String PLANTRACK_LIST = "modules/planTrack/list";
+		String PLANTRACK_ADD = "modules/planTrack/add";
+		String PLANTRACK_ANALYSIS = "modules/planTrack/analysis";
+		String PLANTRACK_GOONLINE = "modules/planTrack/goonline";
+		String PLANTRACK_TESTDEBUG = "modules/planTrack/testDebug";
+		String PLANTRACK_DEVELOPEDTOBEONLINE = "modules/planTrack/developedToBeOnline";
+		String PLANTRACK_TOVOID = "modules/planTrack/toVoid";
+		String PLANTRACK_DETAIL = "modules/planTrack/detail";
+		String PLANTRACK_BUGLIST = "modules/planTrack/attrList";
+		// add by xjn 20220214 新增项目菜单 PT：2092 begin
+		// 这里是项目菜单用的接口
+		String SUBJECT_LIST = "modules/subject/list"; // 查询界面
+		String SUBJECT_ADD = "modules/subject/add"; // 新增界面
+		String SUBJECT_DETAIL = "modules/subject/detail"; // 详情
+		// 这里是项目需求列表用的接口 begin
+		String SUBJECT_CONTRACT_TREE_ADD = "modules/contract/treeAdd";
+		/** 需求TAB页面 */
+		String SUBJECT_CONTRACT_ADD_STORY_TAB = "modules/subject/contractTab";
+		/** 项目需求列表 */
+		String SUBJECT_CONTRACT_ADD_STORY_LIST = "modules/subject/addStoryList";
+		/** 需求列表 */
+		String SUBJECT_CONTRACT_STORY_LIST = "modules/subject/storyList";
+		/** 标记需求大类 */
+		String SUBJECT_CONTRACT_SIGN_STORY_TYPE = "modules/contract/storyType";
+		/** 项目详情附件列表 */
+		String SUBJECT_FILE_LIST = "modules/subject/subjectFileList";
+		/** 合同上传附件 */
+		String SUBJECT_ADD_FILE = "modules/subject/subjectFileadd";
+
+		// 这里是项目需求列表用的接口 end
+		// add by xjn 20220214 新增项目菜单 PT：2092 end
+		/**
+		 * 有效工作日
+		 */
+		String WORK_LOAD_DATA = "modules/workLoadData/list";
+		String WORK_LOAD_DATA_ADD = "modules/workLoadData/add";
+	}
+}

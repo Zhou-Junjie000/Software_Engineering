@@ -1,0 +1,68 @@
+package com.xlf.modules.fee.service.impl;
+
+import java.util.List;
+
+import org.apache.shiro.SecurityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.util.StringUtil;
+import com.xlf.common.base.mybatis.BaseMapper;
+import com.xlf.common.vo.PageVo;
+import com.xlf.modules.fee.Fee;
+import com.xlf.modules.fee.mapper.FeeMapper;
+import com.xlf.modules.fee.service.FeeService;
+import com.xlf.modules.sys.entity.User;
+
+import cn.hutool.core.util.StrUtil;
+
+@Service
+public class FeeServiceImpl implements FeeService{
+	@Autowired
+	private FeeMapper feeMapper;
+	
+	@Override
+	public BaseMapper<Fee> getBaseMapper() {
+		return feeMapper;
+	}
+	
+	@Override
+	public PageVo page(PageVo pageVo, Fee entity) {
+		String orderBy = "";
+		try {
+		String defaultOrderBy = pageOrderBy();
+
+		if(StrUtil.isNotBlank(defaultOrderBy)){
+			orderBy = defaultOrderBy;
+		}
+		StringBuffer condition = new StringBuffer();
+		User user = (User)SecurityUtils.getSubject().getPrincipal();
+
+		if(!StringUtil.isEmpty(entity.getCoachid())){
+			condition.append(" and type = 'coach' and coachid = '"+entity.getCoachid()+"'");
+		}
+		if(!StringUtil.isEmpty(entity.getCoachid())){
+			condition.append(" and type = 'course' and courseid = '"+entity.getCourseid()+"'");
+		}
+		if(!StringUtil.isEmpty(entity.getCoachid())){
+			condition.append(" and type = 'card' and cardid = '"+entity.getCardid()+"'");
+		}
+		if (StrUtil.isNotBlank(pageVo.getOrder()) && StrUtil.isNotBlank(pageVo.getSort())) {
+			orderBy = pageVo.getSort() + " " + pageVo.getOrder();
+		}
+		
+		PageHelper.startPage(pageVo.getPageNum(), pageVo.getPageSize(),orderBy);
+		
+		List<Fee> list = feeMapper.pageList(pageVo.getSearch(),entity,condition.toString());
+		PageInfo<Fee> pageInfo = new PageInfo<Fee>(list);
+
+		pageVo.setRows(pageInfo.getList());
+		pageVo.setTotal(pageInfo.getTotal());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pageVo;
+	}
+}

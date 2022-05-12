@@ -1,0 +1,33 @@
+@ /* 引用的文件路径，{}其它应用的属性对象集合*/
+@layout("/common/_container_list.html",
+@	{
+@		js:["/modules/attachment/storylist.js"],
+@		title: '附件列表',
+@		entity:{
+@			tag:'attachment',
+@			name: '附件列表',
+@			addBtnHide: true,
+@			delBtnHide: true,
+@			fastsearch: false,
+@			fsPlaceholder: '请输入PT值',
+@			fsPlaceholderField: 'search',
+@			advsearch: false
+@		}
+@	}){
+<!--工具栏-->
+<script type="text/html" id="toolbar">
+	{{#if(${delete} == true){ }}
+		<a class="layui-btn layui-btn-radius layui-del-btn delAll_btn"><i class="iconfont icon-delete"></i></a>
+	{{# }}}
+</script>
+<script type="text/javascript">
+//页面常量
+var PAGE_CONSTANT = {
+		relId:'${relId}',
+		relTable:'${relTable}',
+		roleId:'${role.id}',
+		canDelete: ${delete}
+};
+
+</script>
+@}

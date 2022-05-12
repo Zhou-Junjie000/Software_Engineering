@@ -1,0 +1,33 @@
+package com.xlf.modules.fee.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import com.xlf.common.base.mybatis.BaseMapper;
+import com.xlf.modules.fee.Fee;
+@Mapper
+public interface FeeMapper extends BaseMapper<Fee>{
+
+	@Select({"<script>",
+		" select id,type,(select name from t_course where id = courseid) courseid,(select name from t_coach where id = coachid) coachid,(select u.name from t_user u,t_card c where u.id = c.userid and c.id = cardid) cardid,(select name from t_user where id = userid) userid,num,fee,date_format(feetime,'%Y-%m-%d %H:%i:%s') feetime from t_fee a where 1=1",
+		"<if test='search!=null and search!=\"\"'>" +
+	 	"	and a.name like  '%${search}%' " +
+	 	"</if>" +
+	 	"<if test='condition!=null and condition!=\"\"'>" +
+	 	"	${condition} " +
+	 	"</if>" +
+	 	"order by feetime desc" +
+		"</script>"})
+	List<Fee> pageList(@Param("search") String search,@Param("entity") Fee entity,
+			@Param("condition") String condition);
+	
+	@Select("select feetime,sum(fee) fee,(select count(*) from t_book where date_format(booktime,'%Y-%m-%d') = feetime) num from (select date_format(feetime,'%Y-%m-%d') feetime,fee from t_fee) a "
+			+ "group by feetime order by feetime ")
+	List<Fee> countList(@Param("feetime") String feetime);
+	
+	@Select("select count(*) from t_fee where type = #{entity.type} and userid=#{entity.userid} and enddate>now()")
+	int queryFee(@Param("entity") Fee entity);
+}

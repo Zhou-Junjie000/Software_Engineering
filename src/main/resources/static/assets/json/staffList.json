@@ -1,0 +1,64 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 15,
+	"data": [
+        {
+            "jobid":"测试岗位",
+            "phone":"15633533894",
+            "accountstatus":"启用",
+            "roleid":"普通权限",
+            "name":"2",
+            "deptid":"部门测试",
+            "language":"中文",
+            "id":19,
+            "nameen":"spwtest",
+            "account":"spw",
+            "email":"admin"
+        },
+        {
+            "roleid":"普通权限",
+            "vicejob":"出纳",
+            "positionlevel":"法人代表",
+            "jobstatus":"在职",
+            "language":"中文",
+            "nameen":"zhaoxiaodan",
+            "jobid":"测试岗位",
+            "phone":"15633533894",
+            "insurancelevel":"在保",
+            "accountstatus":"启用",
+            "name":"赵晓丹",
+            "id":16,
+            "account":"zhaoxiaodan1",
+            "email":"admin"
+        },
+        {
+            "accountstatus":"启用",
+            "name":"超级管理员",
+            "language":"中文",
+            "id":1,
+            "nameen":"0",
+            "account":"admin"
+        },
+        {
+            "insurancelevelremark":"1",
+            "personneltype":"非正式",
+            "birthdate":"2019-07-11",
+            "roleid":"普通权限",
+            "vicejob":"测试岗位",
+            "positionlevel":"董事总经理",
+            "sex":"男",
+            "jobstatus":"在职",
+            "language":"中文",
+            "nameen":"supengwei",
+            "jobid":"出纳",
+            "phone":"18232184057",
+            "insurancelevel":"在保",
+            "accountstatus":"停用",
+            "name":"苏鹏伟",
+            "id":15,
+            "account":"zhaoxiaodan",
+            "email":"2564963"
+        }
+	]
+}

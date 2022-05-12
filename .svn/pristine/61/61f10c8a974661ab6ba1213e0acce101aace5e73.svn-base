@@ -1,0 +1,19 @@
+package com.xlf.modules.card.entity;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Table(name = "t_card")
+public class Card {
+	@Id
+	private Integer id;
+	private String type;
+	private String startdate;
+	private String enddate;
+	private String fee;
+	private String remark;
+	private String createtime;
+}

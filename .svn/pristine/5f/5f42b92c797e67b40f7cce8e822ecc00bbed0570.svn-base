@@ -1,0 +1,113 @@
+/**
+ * 
+ */
+package com.xlf.common.easyexcel;
+
+import java.util.List;
+import java.util.Set;
+
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataFormat;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.usermodel.Workbook;
+
+import com.alibaba.excel.metadata.CellData;
+import com.alibaba.excel.metadata.Head;
+import com.alibaba.excel.write.handler.CellWriteHandler;
+import com.alibaba.excel.write.metadata.holder.WriteSheetHolder;
+import com.alibaba.excel.write.metadata.holder.WriteTableHolder;
+
+
+public class CustomCellWriteHandler implements CellWriteHandler {
+	
+	  //标黄行宽集合
+    private Set<Integer> blodRowIndexs;
+    private Set<Integer> yellowRowIndexs;
+    
+    private CellStyle cellDateStyle;
+    private CellStyle cellStyle;
+    
+    public CustomCellWriteHandler() {
+    }
+    
+    //构造
+    public CustomCellWriteHandler(Set<Integer> blodRowIndexs,Set<Integer> yellowRowIndexs) {
+        this.blodRowIndexs = blodRowIndexs;
+        this.yellowRowIndexs = yellowRowIndexs;
+    }
+	
+	@Override
+    public void beforeCellCreate(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Row row,
+        Head head, Integer columnIndex, Integer relativeRowIndex, Boolean isHead) {
+    	Workbook workbook = writeSheetHolder.getSheet().getWorkbook();
+    	if(cellStyle ==null){
+    		 cellStyle = workbook.createCellStyle();
+    	}
+    	if(cellDateStyle ==null){
+    		cellDateStyle = workbook.createCellStyle();
+    	}
+        DataFormat format = workbook.createDataFormat();
+        cellDateStyle.setDataFormat(format.getFormat("yyyy/mm/dd"));
+        cellStyle.setDataFormat(format.getFormat("@"));
+        //设置倒出模板列的格式 
+        writeSheetHolder.getSheet().setDefaultColumnStyle(2, cellDateStyle);
+        writeSheetHolder.getSheet().setDefaultColumnStyle(9, cellDateStyle);
+        writeSheetHolder.getSheet().setDefaultColumnStyle(6, cellStyle);
+        writeSheetHolder.getSheet().setDefaultColumnStyle(7, cellStyle);
+    }
+
+    @Override
+    public void afterCellCreate(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Cell cell,
+        Head head, Integer relativeRowIndex, Boolean isHead) {
+
+    }
+
+    @Override
+    public void afterCellDispose(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder,
+        List<CellData> cellDataList, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+        // 这里可以对cell进行任何操作
+        if (!isHead) {
+        	if(writeSheetHolder.getSheetNo()==0){
+        		Workbook workbook = writeSheetHolder.getSheet().getWorkbook();
+            	CellStyle cellStyle = workbook.createCellStyle();
+                Font cellFont = workbook.createFont();
+                cellFont.setFontName("宋体"); 
+                cellFont.setFontHeightInPoints((short) 11);
+                cellStyle.setAlignment(HorizontalAlignment.CENTER);
+                if (CollectionUtils.isNotEmpty(blodRowIndexs)&&blodRowIndexs.contains(cell.getRowIndex())) {
+                	cellFont.setBold(true);
+                }
+                if (CollectionUtils.isNotEmpty(yellowRowIndexs)&&yellowRowIndexs.contains(cell.getRowIndex())) {
+                	cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);//设置前景填充样式
+                    cellStyle.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());//前景填充色
+                }
+               /* if(cell.getColumnIndex()==6||cell.getColumnIndex()==5){
+                	DataFormat format = workbook.createDataFormat();
+                	cellStyle.setDataFormat(format.getFormat("0.00"));
+                }*/
+                cellStyle.setFont(cellFont);
+                cellStyle.setWrapText(true); 
+                cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+                // 下边框
+                cellStyle.setBorderBottom(BorderStyle.THIN);
+                // 左边框
+                cellStyle.setBorderLeft(BorderStyle.THIN);
+                // 上边框
+                cellStyle.setBorderTop(BorderStyle.THIN);
+                // 右边框
+                cellStyle.setBorderRight(BorderStyle.THIN);
+                
+                cell.setCellStyle(cellStyle);
+        	}
+        }
+    }
+
+}

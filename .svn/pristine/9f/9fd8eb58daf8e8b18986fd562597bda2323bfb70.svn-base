@@ -1,0 +1,44 @@
+package com.xlf.modules.attachment.mapper;
+
+import com.xlf.common.base.mybatis.BaseMapper;
+import com.xlf.modules.attachment.entity.AttachmentEntity;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+@Mapper
+public interface AttachmentMapper extends BaseMapper<AttachmentEntity>{
+	@Select({"<script> ",
+		"select * from t_attachment where pt = #{search}"+
+		"<if test='filesource!=null and filesource!=\"\"'>" +
+	 	"	and filesource =  '${filesource}' " +
+	 	"</if>" +
+		"</script> "})
+	List<AttachmentEntity> pageList(@Param("userId")String userId,@Param("search") String search,@Param("filesource")String filesource);
+	
+	@Insert({"<script> ",
+		"insert into " + 
+		"t_attachment (id, PT, CREATETIME, UPLOADER, FILENAME, FILEPATH, "+ 
+		"FILETYPE, FILESIZE, REL_ID,REL_TABLE) " + 
+		"values " + 
+		"<foreach collection=\"list\" item=\"item\" index=\"index\" separator=\",\">" + 
+		"(" + 
+		"#{item.id}," + 
+		"#{item.pt}," + 
+		"#{item.createtime}," + 
+		"#{item.uploader}," + 
+		"#{item.filename}," + 
+		"#{item.filepath}," + 
+		"#{item.filetype}," + 
+		"#{item.filesize}," + 
+		"#{item.relId}," + 
+		"#{item.relTable}" + 
+		")" + 
+		"</foreach>"+
+		"</script>"})
+	Integer inserBatch(@Param("list")List<AttachmentEntity> list);
+	
+
+}

@@ -1,0 +1,13 @@
+package com.xlf.modules.fee.service;
+
+import com.xlf.common.base.mybatis.MybatisEntityService;
+import com.xlf.common.vo.PageVo;
+import com.xlf.common.vo.ResultVo;
+import com.xlf.modules.fee.Fee;
+
+public interface FeeService extends MybatisEntityService<Fee, Integer>{
+
+	PageVo page2(PageVo pageVo, Fee entity);
+	ResultVo countList(PageVo pageVo, Fee entity);
+	int queryFee(Fee fee);
+}
